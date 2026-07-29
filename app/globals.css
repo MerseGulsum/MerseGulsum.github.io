@@ -1413,12 +1413,10 @@ main {
 .last-mile-case__overview-image {
   grid-column: 2;
   grid-row: 1 / span 3;
-  position: relative;
-  top: calc(112px - clamp(132px, 13vw, 192px));
   width: min(100%, 960px);
   height: auto;
   justify-self: end;
-  align-self: start;
+  align-self: center;
   border-radius: 44px;
 }
 
@@ -2352,7 +2350,6 @@ main {
   }
 
   .last-mile-case__overview-image {
-    position: static;
     width: 100%;
     max-width: none;
     margin-top: 32px;
