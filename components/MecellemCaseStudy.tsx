@@ -160,7 +160,7 @@ function MecellemScrollGallery() {
     }
 
     lastScrollYRef.current = window.scrollY;
-    const revealThresholds = [0, 0.2, 0.34, 0.48, 0.62, 0.76];
+    const revealThresholds = [0, 0.18, 0.3, 0.42, 0.54, 0.66];
 
     const revealCard = (index: number) => {
       if (revealedRef.current.has(index)) return;
@@ -173,7 +173,7 @@ function MecellemScrollGallery() {
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY >= lastScrollYRef.current;
+      const isScrollingDown = currentScrollY > lastScrollYRef.current;
       lastScrollYRef.current = currentScrollY;
 
       if (!isScrollingDown || !sectionRef.current) return;
@@ -188,14 +188,17 @@ function MecellemScrollGallery() {
         1
       );
 
-      revealThresholds.forEach((threshold, index) => {
-        if (index > 0 && progress >= threshold) {
-          revealCard(index);
-        }
-      });
+      const nextCardIndex = revealedRef.current.size;
+      const nextThreshold = revealThresholds[nextCardIndex];
+
+      if (
+        nextCardIndex < scrollGalleryImages.length &&
+        progress >= nextThreshold
+      ) {
+        revealCard(nextCardIndex);
+      }
     };
 
-    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -217,10 +220,10 @@ function MecellemScrollGallery() {
           animate={
             prefersReducedMotion || revealedCards.has(index)
               ? { opacity: 1, y: 0, scale: 1 }
-              : { opacity: 1, y: 120, scale: 0.985 }
+              : { opacity: 1, y: 220, scale: 0.985 }
           }
           transition={{
-            duration: 0.9,
+            duration: 0.95,
             ease: [0.22, 1, 0.36, 1]
           }}
           style={
