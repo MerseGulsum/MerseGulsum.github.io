@@ -2,9 +2,17 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useTransform
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
+import type { MotionValue } from "framer-motion";
 
 const galleryItems = [
   {
@@ -31,27 +39,27 @@ const galleryItems = [
 
 const scrollGalleryImages = [
   {
-    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-01.png",
+    src: "/projects/mecellem/scroll-stack/mecellem-scroll-01.png",
     alt: "Mecellem Muamelat interface screenshot."
   },
   {
-    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-02.png",
+    src: "/projects/mecellem/scroll-stack/mecellem-scroll-02.png",
     alt: "Mecellem Mürşit interface screenshot."
   },
   {
-    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-03.png",
+    src: "/projects/mecellem/scroll-stack/mecellem-scroll-03.png",
     alt: "Mecellem Muamelat product interface screenshot."
   },
   {
-    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-04.png",
+    src: "/projects/mecellem/scroll-stack/mecellem-scroll-04.png",
     alt: "Mecellem TTM interface screenshot."
   },
   {
-    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-05.png",
+    src: "/projects/mecellem/scroll-stack/mecellem-scroll-05.png",
     alt: "Mecellem HR interface screenshot."
   },
   {
-    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-06.png",
+    src: "/projects/mecellem/scroll-stack/mecellem-scroll-06.png",
     alt: "Mecellem Mukavele interface screenshot."
   }
 ];
@@ -142,29 +150,109 @@ const editorialSections = [
   }
 ];
 
-function MecellemScrollGallery() {
-  const prefersReducedMotion = useReducedMotion();
+function MecellemStackCard({
+  image,
+  index,
+  total,
+  progress
+}: {
+  image: (typeof scrollGalleryImages)[number];
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const stageCount = total - 1;
+  const y = useTransform(progress, (latest) => {
+    const stage = Math.max(0, Math.min(stageCount, latest * stageCount));
+
+    if (index === 0 || stage >= index) {
+      const depth = Math.min(Math.max(stage - index, 0), 3);
+      return `${depth * -12}px`;
+    }
+
+    const localProgress = Math.max(0, Math.min(1, stage - (index - 1)));
+    return `${(1 - localProgress) * 110}%`;
+  });
+
+  const scale = useTransform(progress, (latest) => {
+    const stage = Math.max(0, Math.min(stageCount, latest * stageCount));
+
+    if (index === 0 || stage >= index) {
+      const depth = Math.min(Math.max(stage - index, 0), 3);
+      return 1 - depth * 0.008;
+    }
+
+    return 1;
+  });
 
   return (
-    <section className="mecellem-scroll-gallery" aria-label="Mecellem product screenshots">
-      {scrollGalleryImages.map((image) => (
-        <motion.figure
-          className="mecellem-scroll-gallery__item"
-          key={image.src}
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 60, scale: 0.97 }}
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            width={1600}
-            height={1000}
-            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), 820px"
-          />
-        </motion.figure>
-      ))}
+    <motion.figure
+      className="mecellem-scroll-stack__card"
+      style={{ y, scale, zIndex: index + 1 }}
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={4098}
+        height={2304}
+        sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1180px, calc(100vw - 200px))"
+      />
+    </motion.figure>
+  );
+}
+
+function MecellemScrollGallery() {
+  const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const displayedProgress = useMotionValue(0);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"]
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const clampedProgress = Math.max(0, Math.min(1, latest));
+
+    if (clampedProgress > displayedProgress.get()) {
+      displayedProgress.set(clampedProgress);
+    }
+  });
+
+  return (
+    <section
+      className={`mecellem-scroll-stack${prefersReducedMotion ? " mecellem-scroll-stack--static" : ""}`}
+      aria-label="Mecellem product screenshots"
+      ref={sectionRef}
+    >
+      {prefersReducedMotion ? (
+        <div className="mecellem-scroll-stack__static">
+          {scrollGalleryImages.map((image) => (
+            <figure className="mecellem-scroll-stack__static-card" key={image.src}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={4098}
+                height={2304}
+                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1180px, calc(100vw - 200px))"
+              />
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <div className="mecellem-scroll-stack__stage">
+          <div className="mecellem-scroll-stack__deck">
+            {scrollGalleryImages.map((image, index) => (
+              <MecellemStackCard
+                image={image}
+                index={index}
+                key={image.src}
+                total={scrollGalleryImages.length}
+                progress={displayedProgress}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

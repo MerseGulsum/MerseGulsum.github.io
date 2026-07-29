@@ -1271,25 +1271,62 @@ main {
   line-height: 1.15;
 }
 
-.mecellem-scroll-gallery {
-  display: grid;
-  gap: clamp(36px, 5vw, 64px);
+.mecellem-scroll-stack {
+  position: relative;
+  width: min(calc(100vw - (var(--gutter) * 2)), calc(var(--max) - (var(--gutter) * 2)));
+  height: 600svh;
+  justify-self: center;
 }
 
-.mecellem-scroll-gallery__item {
+.mecellem-scroll-stack__stage {
+  position: sticky;
+  top: 96px;
+  height: calc(100svh - 96px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mecellem-scroll-stack__deck {
+  position: relative;
+  width: min(100%, calc((100svh - 160px) * 1.77865));
+  aspect-ratio: 4098 / 2304;
+  margin-inline: auto;
+}
+
+.mecellem-scroll-stack__card,
+.mecellem-scroll-stack__static-card {
   margin: 0;
   overflow: hidden;
   border: 2px solid var(--line);
   border-radius: 44px;
+  background: var(--bg);
 }
 
-.mecellem-scroll-gallery__item img {
+.mecellem-scroll-stack__card {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.mecellem-scroll-stack__card img,
+.mecellem-scroll-stack__static-card img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: inherit;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+}
+
+.mecellem-scroll-stack--static {
+  height: auto;
+}
+
+.mecellem-scroll-stack__static {
+  display: grid;
+  gap: clamp(36px, 5vw, 64px);
 }
 
 .projects-page__header,
