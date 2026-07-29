@@ -7,22 +7,22 @@ import type { KeyboardEvent } from "react";
 
 const galleryItems = [
   {
-    src: "/projects/mecellem/gallery/mecellem-11.png",
+    src: "/projects/mecellem/gallery/mecellem-11.webp",
     label: "Contract Analysis",
     alt: "Mecellem contract analysis interface displayed on a laptop."
   },
   {
-    src: "/projects/mecellem/gallery/mecellem-12.png",
+    src: "/projects/mecellem/gallery/mecellem-12.webp",
     label: "Operational Overview",
     alt: "Mecellem operational monitoring dashboard displayed on a laptop."
   },
   {
-    src: "/projects/mecellem/gallery/mecellem-13.png",
+    src: "/projects/mecellem/gallery/mecellem-13.webp",
     label: "Document Management",
     alt: "Mecellem contract and document management interface displayed on a laptop."
   },
   {
-    src: "/projects/mecellem/gallery/mecellem-ana.png",
+    src: "/projects/mecellem/gallery/mecellem-ana.webp",
     label: "Task Management",
     alt: "Mecellem task management interface displayed on a laptop."
   }
@@ -186,7 +186,16 @@ export function MecellemCaseStudy() {
                 cardRefs.current[index] = node;
               }}
             >
-              <Image src={item.src} alt={item.alt} width={1000} height={852} />
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={1000}
+                height={852}
+                priority={index === 0}
+                loading={index === 0 ? undefined : "lazy"}
+                decoding="async"
+                sizes="(max-width: 767px) min(82vw, 420px), (max-width: 1099px) 25vw, 25vw"
+              />
               <span className="mecellem-showcase__overlay" aria-hidden="true" />
               <span className="mecellem-showcase__label">{item.label}</span>
             </button>
@@ -222,24 +231,15 @@ export function MecellemCaseStudy() {
             </section>
             {section.title === "Design Principles" && (
               <div className="mecellem-inline-showcase">
-                <div className="mecellem-inline-showcase__item">
-                  <Image
-                    src="/projects/mecellem/ara-mecellem-2.png"
-                    alt="Mecellem product interface showcase."
-                    width={7000}
-                    height={5000}
-                    sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc((70vw - 16px) / 2), 25vw"
-                  />
-                </div>
-                <div className="mecellem-inline-showcase__item">
-                  <Image
-                    src="/projects/mecellem/mecellem-ana-3.png"
-                    alt="Mecellem product interface showcase."
-                    width={6000}
-                    height={4000}
-                    sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc((70vw - 16px) / 2), 25vw"
-                  />
-                </div>
+                <Image
+                  src="/projects/mecellem/ara-mecellem-2.webp"
+                  alt="Mecellem product interface showcase."
+                  width={7000}
+                  height={5000}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) 70vw, 50vw"
+                />
               </div>
             )}
           </div>

@@ -1296,23 +1296,13 @@ main {
 
 .mecellem-inline-showcase {
   width: 50%;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
   margin-inline: auto;
-}
-
-.mecellem-inline-showcase__item {
-  aspect-ratio: 1.4;
-  overflow: hidden;
 }
 
 .mecellem-inline-showcase img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
 }
 
 .projects-page__header,
@@ -2266,7 +2256,6 @@ main {
 
   .mecellem-inline-showcase {
     width: 100%;
-    grid-template-columns: 1fr;
   }
 
   .mecellem-editorial-copy,
