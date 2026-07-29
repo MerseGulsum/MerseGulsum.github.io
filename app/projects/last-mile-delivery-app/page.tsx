@@ -107,7 +107,7 @@ export default function LastMileDeliveryAppPage() {
                 alt="QR verification screen from the Last Mile Delivery App."
                 width={5000}
                 height={3500}
-                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) 380px, 480px"
+                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) 760px, 960px"
                 decoding="async"
               />
             )}

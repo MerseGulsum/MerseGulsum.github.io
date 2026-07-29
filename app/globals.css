@@ -1322,7 +1322,7 @@ main {
 
 .last-mile-case__section:first-child {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+  grid-template-columns: minmax(0, 1fr) minmax(640px, 960px);
   column-gap: 48px;
   align-items: center;
 }
@@ -1405,7 +1405,7 @@ main {
 .last-mile-case__overview-image {
   grid-column: 2;
   grid-row: 1 / span 3;
-  width: min(100%, 480px);
+  width: min(100%, 960px);
   height: auto;
   justify-self: end;
   align-self: center;
@@ -1988,7 +1988,7 @@ main {
   }
 
   .last-mile-case__section:first-child {
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 760px);
   }
 
   .about-copy {
