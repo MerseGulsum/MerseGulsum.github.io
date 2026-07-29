@@ -1292,34 +1292,39 @@ main {
   line-height: 1.15;
 }
 
-.mecellem-scroll-stack {
-  --stack-step: 20px;
-  --stack-card-height: calc((100vw - (var(--mecellem-gutter) * 2)) * 2304 / 4098);
+.mecellem-scroll-sequence {
   width: 100%;
   box-sizing: border-box;
   position: relative;
   overflow: visible;
 }
 
-.mecellem-scroll-stack__item {
+.mecellem-scroll-sequence__viewport {
   position: relative;
-  z-index: calc(var(--stack-index) + 1);
   width: 100%;
   aspect-ratio: 4098 / 2304;
-  margin: 0;
   overflow: hidden;
   border: 2px solid var(--line);
   border-radius: 44px;
   background: var(--bg);
-  transform-origin: top center;
+}
+
+.mecellem-scroll-sequence__card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: inherit;
+  overflow: hidden;
   will-change: transform;
 }
 
-.mecellem-scroll-stack__item + .mecellem-scroll-stack__item {
-  margin-top: calc(var(--stack-step) - var(--stack-card-height));
+.mecellem-scroll-sequence__card:first-child {
+  position: relative;
 }
 
-.mecellem-scroll-stack__item img {
+.mecellem-scroll-sequence__card img {
   display: block;
   width: 100%;
   height: 100%;
@@ -1900,10 +1905,6 @@ main {
     --mecellem-gutter: 40px;
   }
 
-  .mecellem-scroll-stack {
-    --stack-step: 18px;
-  }
-
   .about-copy {
     width: calc(100vw - (var(--page-inset) * 2));
     max-width: none;
@@ -2234,10 +2235,6 @@ main {
   .mecellem-case {
     --mecellem-gutter: 20px;
     padding-top: 128px;
-  }
-
-  .mecellem-scroll-stack {
-    --stack-step: 16px;
   }
 
   .mecellem-showcase__header {

@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import type { CSSProperties, KeyboardEvent } from "react";
+import type { KeyboardEvent } from "react";
+import type { MotionValue } from "framer-motion";
 
 const galleryItems = [
   {
@@ -146,30 +147,16 @@ function MecellemScrollGallery() {
   const prefersReducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement | null>(null);
   const lastScrollYRef = useRef(0);
-  const revealedRef = useRef<Set<number>>(new Set([0]));
-  const [revealedCards, setRevealedCards] = useState<Set<number>>(
-    () => new Set([0])
-  );
+  const maxProgressRef = useRef(0);
+  const sequenceProgress = useMotionValue(0);
 
   useEffect(() => {
     if (prefersReducedMotion) {
-      const allCards = new Set(scrollGalleryImages.map((_, index) => index));
-      revealedRef.current = allCards;
-      setRevealedCards(allCards);
+      sequenceProgress.set(0);
       return;
     }
 
     lastScrollYRef.current = window.scrollY;
-    const revealThresholds = [0, 0.18, 0.3, 0.42, 0.54, 0.66];
-
-    const revealCard = (index: number) => {
-      if (revealedRef.current.has(index)) return;
-
-      const nextRevealed = new Set(revealedRef.current);
-      nextRevealed.add(index);
-      revealedRef.current = nextRevealed;
-      setRevealedCards(nextRevealed);
-    };
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -180,22 +167,19 @@ function MecellemScrollGallery() {
 
       const rect = sectionRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
+      const startPoint = viewportHeight * 0.82;
+      const endPoint = rect.height * -0.08;
       const progress = Math.min(
         Math.max(
-          (viewportHeight - rect.top) / (viewportHeight + rect.height * 0.35),
+          (startPoint - rect.top) / (startPoint - endPoint),
           0
         ),
         1
       );
 
-      const nextCardIndex = revealedRef.current.size;
-      const nextThreshold = revealThresholds[nextCardIndex];
-
-      if (
-        nextCardIndex < scrollGalleryImages.length &&
-        progress >= nextThreshold
-      ) {
-        revealCard(nextCardIndex);
+      if (progress > maxProgressRef.current) {
+        maxProgressRef.current = progress;
+        sequenceProgress.set(progress);
       }
     };
 
@@ -204,49 +188,68 @@ function MecellemScrollGallery() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, sequenceProgress]);
 
   return (
     <section
-      className="mecellem-scroll-stack"
+      className="mecellem-scroll-sequence"
       aria-label="Mecellem product screenshots"
       ref={sectionRef}
     >
-      {scrollGalleryImages.map((image, index) => (
-        <motion.figure
-          className="mecellem-scroll-stack__item"
-          key={image.src}
-          initial={false}
-          animate={
-            prefersReducedMotion || revealedCards.has(index)
-              ? { opacity: 1, y: 0, scale: 1 }
-              : { opacity: 1, y: 220, scale: 0.985 }
-          }
-          transition={{
-            duration: 0.95,
-            ease: [0.22, 1, 0.36, 1]
-          }}
-          style={
-            {
-              "--stack-index": index,
-              visibility:
-                prefersReducedMotion || revealedCards.has(index)
-                  ? "visible"
-                  : "hidden"
-            } as CSSProperties
-          }
-        >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            width={4098}
-            height={2304}
-            loading={index === 0 ? "eager" : "lazy"}
-            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1180px, calc(100vw - 200px))"
+      <div className="mecellem-scroll-sequence__viewport">
+        {scrollGalleryImages.map((image, index) => (
+          <MecellemSequenceCard
+            image={image}
+            index={index}
+            key={image.src}
+            progress={sequenceProgress}
           />
-        </motion.figure>
-      ))}
+        ))}
+      </div>
     </section>
+  );
+}
+
+function MecellemSequenceCard({
+  image,
+  index,
+  progress
+}: {
+  image: (typeof scrollGalleryImages)[number];
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  const step = 1 / (scrollGalleryImages.length - 1);
+  const isFirstCard = index === 0;
+  const isLastCard = index === scrollGalleryImages.length - 1;
+  const y = useTransform(
+    progress,
+    isFirstCard
+      ? [0, step]
+      : isLastCard
+        ? [(index - 1) * step, 1]
+        : [(index - 1) * step, index * step, (index + 1) * step],
+    isFirstCard
+      ? ["0%", "-105%"]
+      : isLastCard
+        ? ["105%", "0%"]
+        : ["105%", "0%", "-105%"]
+  );
+
+  return (
+    <motion.figure
+      className="mecellem-scroll-sequence__card"
+      style={{ y, zIndex: index + 1 }}
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={4098}
+        height={2304}
+        loading={index === 0 ? "eager" : "lazy"}
+        sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1180px, calc(100vw - 200px))"
+      />
+    </motion.figure>
   );
 }
 
