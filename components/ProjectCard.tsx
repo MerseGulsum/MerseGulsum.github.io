@@ -13,9 +13,6 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className="project-card">
-      <span className="project-card__index" aria-hidden="true">
-        {project.index}
-      </span>
       <div className="project-card__meta">
         <span>{project.index}</span>
         <span>{project.category}</span>

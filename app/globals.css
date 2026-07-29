@@ -627,17 +627,6 @@ main {
   background: rgba(255, 255, 255, 0.052);
 }
 
-.project-card__index {
-  position: absolute;
-  right: 18px;
-  top: 12px;
-  z-index: -1;
-  color: rgba(244, 239, 231, 0.035);
-  font-size: clamp(7rem, 14vw, 12rem);
-  font-weight: var(--font-weight-heavy);
-  line-height: 0.72;
-}
-
 .project-card__meta,
 .project-card__footer,
 .project-panel__meta,
