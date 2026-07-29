@@ -72,7 +72,7 @@ export function MecellemCaseStudy() {
         <div className="mecellem-showcase__header">
           <div>
             <p className="eyebrow">Selected Work</p>
-            <h1 id="mecellem-showcase-title">Inside Mecellem</h1>
+            <h1 id="mecellem-showcase-title">Mecellem</h1>
           </div>
           <div className="mecellem-showcase__controls" aria-label="Mecellem showcase controls">
             <span className="mecellem-showcase__index">

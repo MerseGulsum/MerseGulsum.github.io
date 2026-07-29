@@ -2093,7 +2093,7 @@ main {
   .mecellem-showcase__header {
     display: grid;
     gap: 22px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
 
   .mecellem-showcase__header h1 {
