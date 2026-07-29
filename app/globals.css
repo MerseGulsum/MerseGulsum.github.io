@@ -1217,6 +1217,11 @@ main {
   margin-top: clamp(88px, 11vw, 156px);
 }
 
+.mecellem-editorial-group {
+  display: grid;
+  gap: clamp(76px, 9vw, 124px);
+}
+
 .mecellem-editorial-section {
   display: grid;
   gap: 22px;
@@ -1264,6 +1269,27 @@ main {
   font-size: clamp(1.25rem, 1.7vw, 1.7rem);
   font-weight: var(--font-weight-heavy);
   line-height: 1.15;
+}
+
+.mecellem-scroll-gallery {
+  display: grid;
+  gap: clamp(36px, 5vw, 64px);
+}
+
+.mecellem-scroll-gallery__item {
+  margin: 0;
+  overflow: hidden;
+  border: 2px solid var(--line);
+  border-radius: 44px;
+}
+
+.mecellem-scroll-gallery__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: center;
 }
 
 .projects-page__header,

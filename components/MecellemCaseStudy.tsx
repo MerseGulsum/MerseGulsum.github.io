@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
 
@@ -25,6 +26,33 @@ const galleryItems = [
     src: "/projects/mecellem/gallery/mecellem-ana.png",
     label: "Task Management",
     alt: "Mecellem task management interface displayed on a laptop."
+  }
+];
+
+const scrollGalleryImages = [
+  {
+    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-01.png",
+    alt: "Mecellem Muamelat interface screenshot."
+  },
+  {
+    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-02.png",
+    alt: "Mecellem Mürşit interface screenshot."
+  },
+  {
+    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-03.png",
+    alt: "Mecellem Muamelat product interface screenshot."
+  },
+  {
+    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-04.png",
+    alt: "Mecellem TTM interface screenshot."
+  },
+  {
+    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-05.png",
+    alt: "Mecellem HR interface screenshot."
+  },
+  {
+    src: "/projects/mecellem/scroll-gallery/mecellem-scroll-06.png",
+    alt: "Mecellem Mukavele interface screenshot."
   }
 ];
 
@@ -114,6 +142,33 @@ const editorialSections = [
   }
 ];
 
+function MecellemScrollGallery() {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <section className="mecellem-scroll-gallery" aria-label="Mecellem product screenshots">
+      {scrollGalleryImages.map((image) => (
+        <motion.figure
+          className="mecellem-scroll-gallery__item"
+          key={image.src}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 60, scale: 0.97 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={1600}
+            height={1000}
+            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), 820px"
+          />
+        </motion.figure>
+      ))}
+    </section>
+  );
+}
+
 export function MecellemCaseStudy() {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -196,27 +251,30 @@ export function MecellemCaseStudy() {
 
       <div className="mecellem-editorial-flow">
         {editorialSections.map((section) => (
-          <section className="mecellem-editorial-section" key={section.title}>
-            {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
-            <h2>{section.title}</h2>
-            {section.body && (
-              <div className="mecellem-editorial-copy">
-                {section.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            )}
-            {section.items && (
-              <div className="mecellem-editorial-list">
-                {section.items.map((item) => (
-                  <div className="mecellem-editorial-item" key={item.title}>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </section>
+          <div className="mecellem-editorial-group" key={section.title}>
+            <section className="mecellem-editorial-section">
+              {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
+              <h2>{section.title}</h2>
+              {section.body && (
+                <div className="mecellem-editorial-copy">
+                  {section.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              )}
+              {section.items && (
+                <div className="mecellem-editorial-list">
+                  {section.items.map((item) => (
+                    <div className="mecellem-editorial-item" key={item.title}>
+                      <h3>{item.title}</h3>
+                      <p>{item.body}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+            {section.title === "Design Principles" && <MecellemScrollGallery />}
+          </div>
         ))}
       </div>
     </article>
