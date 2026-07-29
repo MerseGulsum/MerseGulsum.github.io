@@ -859,11 +859,6 @@ main {
   background: linear-gradient(135deg, #ff8b5f, #d9ff63);
 }
 
-.project-visual--hmi .project-visual__orb--one,
-.project-visual--hmi .project-visual__orb--two {
-  background: linear-gradient(135deg, #ff6f61, #5e6ad2);
-}
-
 .project-visual--ai .project-visual__orb--one,
 .project-visual--ai .project-visual__orb--two {
   background: linear-gradient(135deg, #d9ff63, #f4efe7);

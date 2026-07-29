@@ -9,7 +9,7 @@ export type CaseStudy = {
   outcome: string;
 };
 
-export type ProjectVisualKind = "career" | "finance" | "logistics" | "hmi" | "ai";
+export type ProjectVisualKind = "career" | "finance" | "logistics" | "ai";
 
 export type Project = {
   slug: string;

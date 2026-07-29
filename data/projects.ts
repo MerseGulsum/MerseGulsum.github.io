@@ -1,5 +1,4 @@
 import { aiExperimentCase } from "@/data/cases/aiExperiment";
-import { automotiveCase } from "@/data/cases/automotive";
 import { logisticsCase } from "@/data/cases/logistics";
 import { mehirCase } from "@/data/cases/mehir";
 import { proviaCase } from "@/data/cases/provia";
@@ -79,36 +78,8 @@ export const projects: Project[] = [
     skills: ["Figma", "FigJam", "Codex"],
     services: ["Web App Design", "UX & Product Strategy", "Design Systems"],
     heroColor: "#ff8b5f",
-    nextProject: "automotive-hmi-concept",
-    caseStudy: logisticsCase
-  },
-  {
-    slug: "automotive-hmi-concept",
-    index: "03",
-    title: "Automotive HMI Concept",
-    year: "2026",
-    role: "HMI design, interaction model, motion direction",
-    category: "HMI Design / Motion",
-    description:
-      "An in-vehicle interface concept focused on glanceable hierarchy, restrained motion and safe interaction patterns.",
-    summary: "A vehicle HMI concept for high-priority information, mode changes and glanceable interaction.",
-    shortDescription:
-      "An automotive interface concept focused on glanceable information, safe interaction patterns and a clear visual hierarchy for in-vehicle use.",
-    showcaseCategory: "HMI Design / In-Vehicle Experience",
-    externalUrl: "#",
-    isLive: false,
-    coverImage: "/projects/automotive-hmi-concept/cover.svg",
-    gallery: [
-      "/projects/automotive-hmi-concept/screen-01.svg",
-      "/projects/automotive-hmi-concept/screen-02.svg"
-    ],
-    imageAlt: "Automotive HMI placeholder with dashboard arcs, mode indicators and dark interface panels.",
-    visual: "hmi",
-    skills: ["Figma", "Adobe After Effects", "Blender"],
-    services: ["HMI Design", "Design Systems", "UX & Product Strategy"],
-    heroColor: "#ff6f61",
     nextProject: "ai-product-experiment",
-    caseStudy: automotiveCase
+    caseStudy: logisticsCase
   },
   {
     slug: "ai-product-experiment",

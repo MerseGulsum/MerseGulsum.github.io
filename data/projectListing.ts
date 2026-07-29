@@ -24,11 +24,6 @@ const listingContent = {
     description:
       "A reserved space for a future case study focused on structure, clarity and high-quality interface storytelling."
   },
-  "automotive-hmi-concept": {
-    category: "Interface Design",
-    description:
-      "A reserved space for an upcoming interface concept with measured spacing, minimal copy and a dominant visual field."
-  },
   "ai-product-experiment": {
     category: "Product Strategy",
     description:
@@ -36,7 +31,7 @@ const listingContent = {
   }
 } satisfies Record<string, { category: string; description: string }>;
 
-const listingSlugs = ["provia-career", "logistics-product", "automotive-hmi-concept", "ai-product-experiment"] as const;
+const listingSlugs = ["provia-career", "logistics-product", "ai-product-experiment"] as const;
 
 export const projectListing: ProjectListingItem[] = listingSlugs.flatMap((slug) => {
   const project = projects.find((item) => item.slug === slug);

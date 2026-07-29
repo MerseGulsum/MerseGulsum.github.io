@@ -154,10 +154,6 @@
   transform: rotate(-14deg);
 }
 
-.visualArt_hmi .visualPanelPrimary {
-  border-radius: 999px 999px 14px 14px;
-}
-
 .visualArt_ai .visualGrid {
   transform: perspective(900px) rotateX(48deg) rotateZ(-7deg) translateY(18%);
 }
