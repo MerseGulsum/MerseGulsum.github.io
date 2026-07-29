@@ -1,4 +1,5 @@
 import Image from "next/image";
+import recipientShowcase from "../../../references/alıcı.png";
 import kargoShowcase from "../../../references/kargo.png";
 
 export const metadata = {
@@ -127,6 +128,16 @@ export default function LastMileDeliveryAppPage() {
                 className="last-mile-case__courier-showcase"
                 src={kargoShowcase}
                 alt="Last Mile Delivery courier app showcase."
+                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) calc(100vw - 80px), 1200px"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            {section.title === "Recipient App" && (
+              <Image
+                className="last-mile-case__courier-showcase"
+                src={recipientShowcase}
+                alt="Last Mile Delivery recipient app showcase."
                 sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) calc(100vw - 80px), 1200px"
                 loading="lazy"
                 decoding="async"
