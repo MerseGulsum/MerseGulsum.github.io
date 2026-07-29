@@ -85,31 +85,49 @@ const caseStudySections = [
   }
 ];
 
+const overviewSections = caseStudySections.slice(0, 4);
+const detailSections = caseStudySections.slice(4);
+
 export default function LastMileDeliveryAppPage() {
   return (
     <article className="last-mile-case">
       <div className="last-mile-case__flow">
-        {caseStudySections.map((section, index) => (
+        <section className="last-mile-case__intro" aria-labelledby="last-mile-title">
+          <div className="last-mile-case__intro-copy">
+            {overviewSections.map((section, index) => (
+              <div className="last-mile-case__intro-section" key={`${section.title}-${index}`}>
+                {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
+                {index === 0 ? <h1 id="last-mile-title">{section.title}</h1> : <h2>{section.title}</h2>}
+                {section.body && (
+                  <div className="last-mile-case__copy">
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <Image
+            className="last-mile-case__overview-image"
+            src="/projects/last-mile-delivery-app/qr.png"
+            alt="QR verification screen from the Last Mile Delivery App."
+            width={5000}
+            height={3500}
+            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) calc(100vw - 80px), 52vw"
+            decoding="async"
+          />
+        </section>
+
+        {detailSections.map((section, index) => (
           <section className="last-mile-case__section" key={`${section.title}-${index}`}>
-            {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
-            {index === 0 ? <h1>{section.title}</h1> : <h2>{section.title}</h2>}
+            <h2>{section.title}</h2>
             {section.body && (
               <div className="last-mile-case__copy">
                 {section.body.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
-            )}
-            {index === 0 && (
-              <Image
-                className="last-mile-case__overview-image"
-                src="/projects/last-mile-delivery-app/qr.png"
-                alt="QR verification screen from the Last Mile Delivery App."
-                width={5000}
-                height={3500}
-                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) 760px, 960px"
-                decoding="async"
-              />
             )}
             {section.list && (
               <ul className="last-mile-case__list">

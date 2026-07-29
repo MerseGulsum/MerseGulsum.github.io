@@ -1308,7 +1308,7 @@ main {
 .last-mile-case {
   --last-mile-gutter: 66px;
   width: 100%;
-  padding: clamp(132px, 13vw, 192px) var(--last-mile-gutter) clamp(92px, 10vw, 152px);
+  padding: 112px var(--last-mile-gutter) clamp(92px, 10vw, 152px);
 }
 
 .last-mile-case__flow {
@@ -1320,23 +1320,30 @@ main {
   text-align: left;
 }
 
-.last-mile-case__section:first-child {
+.last-mile-case__intro {
+  width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(640px, 960px);
+  grid-template-columns: minmax(0, 42fr) minmax(0, 52fr);
   column-gap: 48px;
-  align-items: center;
+  align-items: start;
 }
 
+.last-mile-case__intro + .last-mile-case__section,
 .last-mile-case__section + .last-mile-case__section {
   margin-top: clamp(76px, 9vw, 124px);
 }
 
+.last-mile-case__intro-section h1,
+.last-mile-case__intro-section h2,
+.last-mile-case__intro-section p,
 .last-mile-case__section h1,
 .last-mile-case__section h2,
 .last-mile-case__section p {
   margin: 0;
 }
 
+.last-mile-case__intro-section h1,
+.last-mile-case__intro-section h2,
 .last-mile-case__section h1,
 .last-mile-case__section h2 {
   max-width: 100%;
@@ -1347,18 +1354,17 @@ main {
   letter-spacing: 0;
 }
 
+.last-mile-case__intro-section .eyebrow,
 .last-mile-case__section .eyebrow {
   margin-bottom: 22px;
 }
 
-.last-mile-case__section:first-child .eyebrow {
+.last-mile-case__intro-section:first-child .eyebrow {
   margin-bottom: 24px;
 }
 
-.last-mile-case__section:first-child .eyebrow,
-.last-mile-case__section:first-child h1,
-.last-mile-case__section:first-child .last-mile-case__copy {
-  grid-column: 1;
+.last-mile-case__intro-section + .last-mile-case__intro-section {
+  margin-top: clamp(32px, 3.2vw, 44px);
 }
 
 .last-mile-case__copy,
@@ -1373,7 +1379,7 @@ main {
   margin-top: 22px;
 }
 
-.last-mile-case__section:first-child .last-mile-case__copy {
+.last-mile-case__intro-section .last-mile-case__copy {
   margin-top: 16px;
 }
 
@@ -1411,12 +1417,10 @@ main {
 }
 
 .last-mile-case__overview-image {
-  grid-column: 2;
-  grid-row: 1 / span 3;
   width: min(100%, 960px);
   height: auto;
   justify-self: end;
-  align-self: center;
+  align-self: start;
   border-radius: 44px;
 }
 
@@ -1996,8 +2000,14 @@ main {
     --last-mile-gutter: 40px;
   }
 
-  .last-mile-case__section:first-child {
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 760px);
+  .last-mile-case__intro {
+    display: block;
+  }
+
+  .last-mile-case__overview-image {
+    width: 100%;
+    max-width: none;
+    margin-top: 32px;
   }
 
   .about-copy {
@@ -2343,10 +2353,6 @@ main {
 
   .last-mile-case {
     --last-mile-gutter: 20px;
-  }
-
-  .last-mile-case__section:first-child {
-    display: block;
   }
 
   .last-mile-case__overview-image {
