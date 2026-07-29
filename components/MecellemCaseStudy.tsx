@@ -222,13 +222,24 @@ export function MecellemCaseStudy() {
             </section>
             {section.title === "Design Principles" && (
               <div className="mecellem-inline-showcase">
-                <Image
-                  src="/projects/mecellem/ara-mecellem-2.png"
-                  alt="Mecellem product interface showcase."
-                  width={7000}
-                  height={5000}
-                  sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) 70vw, 50vw"
-                />
+                <div className="mecellem-inline-showcase__item">
+                  <Image
+                    src="/projects/mecellem/ara-mecellem-2.png"
+                    alt="Mecellem product interface showcase."
+                    width={7000}
+                    height={5000}
+                    sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc((70vw - 16px) / 2), 25vw"
+                  />
+                </div>
+                <div className="mecellem-inline-showcase__item">
+                  <Image
+                    src="/projects/mecellem/mecellem-ana-3.png"
+                    alt="Mecellem product interface showcase."
+                    width={6000}
+                    height={4000}
+                    sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc((70vw - 16px) / 2), 25vw"
+                  />
+                </div>
               </div>
             )}
           </div>
