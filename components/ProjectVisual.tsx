@@ -13,7 +13,11 @@ export function ProjectVisual({
   useCoverImage?: boolean;
   displayTitle?: string;
 }) {
-  const showCoverImage = useCoverImage && project.slug === "provia-career";
+  const coverImageBySlug: Partial<Record<Project["slug"], string>> = {
+    "provia-career": "/projects/provia-career/provia-cover.png",
+    "logistics-product": "/projects/logistics-product/kargo-home.png"
+  };
+  const coverImage = useCoverImage ? coverImageBySlug[project.slug] : undefined;
   const title = displayTitle ?? project.title;
 
   return (
@@ -23,9 +27,9 @@ export function ProjectVisual({
       role="img"
       aria-label={project.imageAlt}
     >
-      {showCoverImage ? (
+      {coverImage ? (
         <Image
-          src="/projects/provia-career/provia-cover.png"
+          src={coverImage}
           alt=""
           fill
           sizes="(max-width: 899px) 78vw, 540px"

@@ -744,6 +744,7 @@ main {
 }
 
 .project-visual__cover-image {
+  display: block;
   object-fit: cover;
   object-position: center;
 }
