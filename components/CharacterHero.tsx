@@ -84,9 +84,9 @@ export function CharacterHero() {
       </div>
 
       <div className="hero-center">
-        <h1 id="home-hero-title" className="hero-title" aria-label="Hi, I'm Merse.">
+        <h1 id="home-hero-title" className="hero-title" aria-label="Hi, I'm Gülsüm.">
           <span className="hero-title__mask">
-            <span>Hi, I&apos;m Merse.</span>
+            <span>Hi, I&apos;m Gülsüm.</span>
           </span>
         </h1>
         <Link
