@@ -1,4 +1,5 @@
 import Image from "next/image";
+import kargoShowcase from "../../../references/kargo.png";
 
 export const metadata = {
   title: "Last Mile Delivery App"
@@ -121,6 +122,16 @@ export default function LastMileDeliveryAppPage() {
 
         {detailSections.map((section, index) => (
           <section className="last-mile-case__section" key={`${section.title}-${index}`}>
+            {section.title === "Courier App" && (
+              <Image
+                className="last-mile-case__courier-showcase"
+                src={kargoShowcase}
+                alt="Last Mile Delivery courier app showcase."
+                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) calc(100vw - 80px), 1200px"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
             <h2>{section.title}</h2>
             {section.body && (
               <div className="last-mile-case__copy">
