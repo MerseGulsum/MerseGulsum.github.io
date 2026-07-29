@@ -1211,7 +1211,6 @@ main {
 }
 
 .mecellem-editorial-flow {
-  max-width: 820px;
   display: grid;
   gap: clamp(76px, 9vw, 124px);
   margin-top: clamp(88px, 11vw, 156px);
@@ -1224,7 +1223,9 @@ main {
 
 .mecellem-editorial-section {
   display: grid;
-  gap: 22px;
+  grid-template-columns: 80px minmax(220px, 0.8fr) minmax(260px, 1fr) 44px;
+  gap: var(--space-3);
+  align-items: start;
 }
 
 .mecellem-editorial-section h2,
@@ -1233,7 +1234,20 @@ main {
   margin: 0;
 }
 
+.mecellem-editorial-section > .eyebrow {
+  grid-column: 1 / 2;
+  padding-top: 0.5em;
+}
+
+.mecellem-editorial-content {
+  grid-column: 2 / 4;
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
 .mecellem-editorial-section h2 {
+  max-width: 760px;
   color: var(--text);
   font-size: clamp(2.8rem, 5.4vw, 6.4rem);
   font-weight: var(--font-weight-heavy);
@@ -1242,6 +1256,7 @@ main {
 }
 
 .mecellem-editorial-copy {
+  max-width: 720px;
   display: grid;
   gap: 16px;
 }
@@ -1254,6 +1269,7 @@ main {
 }
 
 .mecellem-editorial-list {
+  max-width: 720px;
   display: grid;
   gap: 28px;
   margin-top: 8px;
@@ -2047,6 +2063,16 @@ main {
 
   .service-row__details-inner {
     grid-column: 2 / -1;
+  }
+
+  .mecellem-editorial-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .mecellem-editorial-section > .eyebrow,
+  .mecellem-editorial-content {
+    grid-column: 1;
   }
 
   .case-facts,

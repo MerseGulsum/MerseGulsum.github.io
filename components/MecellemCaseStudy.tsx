@@ -342,24 +342,26 @@ export function MecellemCaseStudy() {
           <div className="mecellem-editorial-group" key={section.title}>
             <section className="mecellem-editorial-section">
               {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
-              <h2>{section.title}</h2>
-              {section.body && (
-                <div className="mecellem-editorial-copy">
-                  {section.body.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              )}
-              {section.items && (
-                <div className="mecellem-editorial-list">
-                  {section.items.map((item) => (
-                    <div className="mecellem-editorial-item" key={item.title}>
-                      <h3>{item.title}</h3>
-                      <p>{item.body}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
+              <div className="mecellem-editorial-content">
+                <h2>{section.title}</h2>
+                {section.body && (
+                  <div className="mecellem-editorial-copy">
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+                )}
+                {section.items && (
+                  <div className="mecellem-editorial-list">
+                    {section.items.map((item) => (
+                      <div className="mecellem-editorial-item" key={item.title}>
+                        <h3>{item.title}</h3>
+                        <p>{item.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </section>
             {section.title === "Design Principles" && <MecellemScrollGallery />}
           </div>
