@@ -83,7 +83,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-product-experiment",
-    index: "04",
+    index: "03",
     title: "Mecellem",
     year: "2026",
     role: "AI workflow design, prototype strategy, product UX",
