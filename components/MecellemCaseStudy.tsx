@@ -159,8 +159,7 @@ function MecellemScrollGallery() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{
             duration: 0.9,
-            ease: [0.22, 1, 0.36, 1],
-            delay: index === 0 ? 0 : 0.04
+            ease: [0.22, 1, 0.36, 1]
           }}
         >
           <Image

@@ -1294,16 +1294,21 @@ main {
 
 .mecellem-scroll-reveal {
   width: 100%;
+  box-sizing: border-box;
+  position: relative;
   display: grid;
-  gap: clamp(36px, 5vw, 64px);
+  gap: clamp(28px, 3vw, 40px);
+  overflow: visible;
 }
 
 .mecellem-scroll-reveal__item {
+  position: relative;
   margin: 0;
   overflow: hidden;
   border: 2px solid var(--line);
   border-radius: 44px;
   background: var(--bg);
+  will-change: transform, opacity;
 }
 
 .mecellem-scroll-reveal__item img {
