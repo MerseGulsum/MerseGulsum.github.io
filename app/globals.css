@@ -1211,10 +1211,9 @@ main {
 }
 
 .mecellem-editorial-flow {
-  width: calc(100vw - (var(--gutter) * 2));
+  width: 100%;
   display: grid;
   gap: clamp(76px, 9vw, 124px);
-  margin-left: calc((100% - (100vw - (var(--gutter) * 2))) / 2);
   margin-top: clamp(88px, 11vw, 156px);
 }
 
@@ -1225,8 +1224,8 @@ main {
 
 .mecellem-editorial-section {
   display: grid;
-  grid-template-columns: 80px minmax(220px, 0.8fr) minmax(260px, 1fr) 44px;
-  gap: var(--space-3);
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: var(--space-4);
   align-items: start;
 }
 
@@ -1242,24 +1241,25 @@ main {
 }
 
 .mecellem-editorial-content {
-  grid-column: 2 / 4;
+  grid-column: 2;
   display: grid;
   gap: 22px;
   min-width: 0;
 }
 
 .mecellem-editorial-section h2 {
-  max-width: none;
+  max-width: 100%;
   color: var(--text);
   font-size: clamp(2.8rem, 5.4vw, 6.4rem);
   font-weight: var(--font-weight-heavy);
   line-height: 0.96;
   letter-spacing: 0;
-  white-space: nowrap;
+  overflow-wrap: normal;
 }
 
 .mecellem-editorial-copy {
-  width: min(100%, 720px);
+  width: 100%;
+  max-width: 680px;
   display: grid;
   gap: 16px;
 }
@@ -1272,7 +1272,8 @@ main {
 }
 
 .mecellem-editorial-list {
-  width: min(100%, 720px);
+  width: 100%;
+  max-width: 680px;
   display: grid;
   gap: 28px;
   margin-top: 8px;
