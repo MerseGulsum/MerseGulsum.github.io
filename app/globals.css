@@ -1065,6 +1065,213 @@ main {
   left: var(--gutter);
 }
 
+.mecellem-case {
+  position: relative;
+  width: min(100%, var(--max));
+  margin: 0 auto;
+  padding: 160px var(--gutter) var(--space-7);
+  overflow-x: clip;
+}
+
+.mecellem-case__back {
+  position: absolute;
+  top: 24px;
+  left: var(--gutter);
+}
+
+.mecellem-hero {
+  min-height: calc(100svh - 160px);
+  display: grid;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(420px, 1fr);
+  gap: clamp(44px, 7vw, 104px);
+  align-items: center;
+  padding-bottom: clamp(72px, 10vw, 140px);
+}
+
+.mecellem-hero__copy,
+.mecellem-section__copy,
+.mecellem-highlights__header,
+.mecellem-reflection {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+}
+
+.mecellem-hero h1,
+.mecellem-section h2,
+.mecellem-highlights h2,
+.mecellem-reflection h2 {
+  margin: 0;
+  color: var(--text);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0;
+}
+
+.mecellem-hero h1 {
+  max-width: 9.8em;
+  font-size: clamp(4.3rem, 9vw, 9.4rem);
+  line-height: 0.88;
+}
+
+.mecellem-section h2,
+.mecellem-highlights h2,
+.mecellem-reflection h2 {
+  font-size: clamp(3rem, 6vw, 7rem);
+  line-height: 0.92;
+}
+
+.mecellem-copy-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.mecellem-copy-stack p,
+.mecellem-principle-card p,
+.mecellem-highlight p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.26vw, 1.18rem);
+  line-height: 1.68;
+}
+
+.mecellem-hero__copy .mecellem-copy-stack,
+.mecellem-section__copy .mecellem-copy-stack,
+.mecellem-reflection .mecellem-copy-stack {
+  max-width: 680px;
+}
+
+.mecellem-visual {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.mecellem-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.mecellem-visual--hero {
+  aspect-ratio: 1.175;
+  border-radius: 44px;
+}
+
+.mecellem-section {
+  display: grid;
+  gap: clamp(40px, 7vw, 96px);
+  align-items: center;
+  padding: clamp(84px, 11vw, 152px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.mecellem-section--context {
+  grid-template-columns: minmax(280px, 0.62fr) minmax(420px, 1fr);
+}
+
+.mecellem-section--approach {
+  grid-template-columns: minmax(360px, 0.92fr) minmax(300px, 0.78fr);
+}
+
+.mecellem-visual--wide {
+  aspect-ratio: 1.175;
+  border-radius: 44px;
+}
+
+.mecellem-visual--compact {
+  aspect-ratio: 1.607;
+  border-radius: 36px;
+}
+
+.mecellem-principle-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 2px 0 0;
+  list-style: none;
+}
+
+.mecellem-principle-list li {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: var(--font-weight-heavy);
+  text-transform: uppercase;
+}
+
+.mecellem-principles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  padding: clamp(84px, 11vw, 152px) 0;
+  border-top: 1px solid var(--line);
+  background: var(--line);
+}
+
+.mecellem-principle-card {
+  min-height: 280px;
+  display: grid;
+  align-content: space-between;
+  gap: 36px;
+  background: var(--bg);
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.mecellem-principle-card h2,
+.mecellem-highlight h3 {
+  margin: 0;
+  color: var(--text);
+  font-weight: var(--font-weight-heavy);
+  line-height: 0.98;
+}
+
+.mecellem-principle-card h2 {
+  font-size: clamp(2rem, 3.4vw, 4.2rem);
+}
+
+.mecellem-highlights {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.32fr) minmax(0, 0.68fr);
+  gap: clamp(40px, 7vw, 96px);
+  padding: clamp(84px, 11vw, 152px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.mecellem-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.mecellem-highlight {
+  min-height: 220px;
+  display: grid;
+  align-content: space-between;
+  gap: 32px;
+  background: var(--bg);
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.mecellem-highlight h3 {
+  font-size: clamp(1.35rem, 2vw, 2.25rem);
+}
+
+.mecellem-reflection {
+  justify-items: start;
+  max-width: 980px;
+  padding: clamp(96px, 13vw, 180px) 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.mecellem-reflection .mecellem-copy-stack {
+  max-width: 760px;
+}
+
 .projects-page__header,
 .contact-page__intro {
   margin-bottom: var(--space-6);
@@ -1679,9 +1886,20 @@ main {
 
   .case-hero,
   .contact-page,
-  .about-page__hero {
+  .about-page__hero,
+  .mecellem-hero,
+  .mecellem-section,
+  .mecellem-highlights {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .mecellem-hero {
+    min-height: auto;
+  }
+
+  .mecellem-principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .projects-showcase__item {
@@ -1928,6 +2146,41 @@ main {
 
   .next-project a {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .mecellem-case {
+    padding-top: 128px;
+  }
+
+  .mecellem-hero h1 {
+    font-size: clamp(3.5rem, 17vw, 5.5rem);
+  }
+
+  .mecellem-section h2,
+  .mecellem-highlights h2,
+  .mecellem-reflection h2 {
+    font-size: clamp(2.7rem, 13vw, 4.6rem);
+  }
+
+  .mecellem-visual--hero,
+  .mecellem-visual--wide {
+    border-radius: 28px;
+  }
+
+  .mecellem-visual--compact {
+    border-radius: 24px;
+  }
+
+  .mecellem-principles,
+  .mecellem-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mecellem-principle-card,
+  .mecellem-highlight {
+    min-height: auto;
   }
 }
 

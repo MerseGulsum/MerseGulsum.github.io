@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { CaseStudyLayout } from "@/components/CaseStudyLayout";
 import { Footer } from "@/components/Footer";
+import { MecellemCaseStudy } from "@/components/MecellemCaseStudy";
 import { getProject, projects } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -23,7 +24,11 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
 
   return (
     <>
-      <CaseStudyLayout project={project} />
+      {project.slug === "ai-product-experiment" ? (
+        <MecellemCaseStudy />
+      ) : (
+        <CaseStudyLayout project={project} />
+      )}
       <Footer />
     </>
   );
