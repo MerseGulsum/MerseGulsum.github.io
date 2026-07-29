@@ -22,7 +22,7 @@ const galleryItems = [
     alt: "Mecellem contract and document management interface displayed on a laptop."
   },
   {
-    src: "/projects/mecellem/gallery/mecellem-14.png",
+    src: "/projects/mecellem/gallery/mecellem-ana.png",
     label: "Task Management",
     alt: "Mecellem task management interface displayed on a laptop."
   }
