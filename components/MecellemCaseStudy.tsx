@@ -2,17 +2,9 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import {
-  motion,
-  useMotionValue,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useTransform
-} from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
-import type { MotionValue } from "framer-motion";
 
 const galleryItems = [
   {
@@ -150,109 +142,37 @@ const editorialSections = [
   }
 ];
 
-function MecellemStackCard({
-  image,
-  index,
-  total,
-  progress
-}: {
-  image: (typeof scrollGalleryImages)[number];
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  const stageCount = total - 1;
-  const y = useTransform(progress, (latest) => {
-    const stage = Math.max(0, Math.min(stageCount, latest * stageCount));
-
-    if (index === 0 || stage >= index) {
-      const depth = Math.min(Math.max(stage - index, 0), 3);
-      return `${depth * -12}px`;
-    }
-
-    const localProgress = Math.max(0, Math.min(1, stage - (index - 1)));
-    return `${(1 - localProgress) * 110}%`;
-  });
-
-  const scale = useTransform(progress, (latest) => {
-    const stage = Math.max(0, Math.min(stageCount, latest * stageCount));
-
-    if (index === 0 || stage >= index) {
-      const depth = Math.min(Math.max(stage - index, 0), 3);
-      return 1 - depth * 0.008;
-    }
-
-    return 1;
-  });
-
-  return (
-    <motion.figure
-      className="mecellem-scroll-stack__card"
-      style={{ y, scale, zIndex: index + 1 }}
-    >
-      <Image
-        src={image.src}
-        alt={image.alt}
-        width={4098}
-        height={2304}
-        sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1180px, calc(100vw - 200px))"
-      />
-    </motion.figure>
-  );
-}
-
 function MecellemScrollGallery() {
   const prefersReducedMotion = useReducedMotion();
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const displayedProgress = useMotionValue(0);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"]
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const clampedProgress = Math.max(0, Math.min(1, latest));
-
-    if (clampedProgress > displayedProgress.get()) {
-      displayedProgress.set(clampedProgress);
-    }
-  });
 
   return (
     <section
-      className={`mecellem-scroll-stack${prefersReducedMotion ? " mecellem-scroll-stack--static" : ""}`}
+      className="mecellem-scroll-reveal"
       aria-label="Mecellem product screenshots"
-      ref={sectionRef}
     >
-      {prefersReducedMotion ? (
-        <div className="mecellem-scroll-stack__static">
-          {scrollGalleryImages.map((image) => (
-            <figure className="mecellem-scroll-stack__static-card" key={image.src}>
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={4098}
-                height={2304}
-                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1180px, calc(100vw - 200px))"
-              />
-            </figure>
-          ))}
-        </div>
-      ) : (
-        <div className="mecellem-scroll-stack__stage">
-          <div className="mecellem-scroll-stack__deck">
-            {scrollGalleryImages.map((image, index) => (
-              <MecellemStackCard
-                image={image}
-                index={index}
-                key={image.src}
-                total={scrollGalleryImages.length}
-                progress={displayedProgress}
-              />
-            ))}
-          </div>
-        </div>
-      )}
+      {scrollGalleryImages.map((image, index) => (
+        <motion.figure
+          className="mecellem-scroll-reveal__item"
+          key={image.src}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 64, scale: 0.98 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+            delay: index === 0 ? 0 : 0.04
+          }}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={4098}
+            height={2304}
+            loading={index === 0 ? "eager" : "lazy"}
+            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1180px, calc(100vw - 200px))"
+          />
+        </motion.figure>
+      ))}
     </section>
   );
 }
