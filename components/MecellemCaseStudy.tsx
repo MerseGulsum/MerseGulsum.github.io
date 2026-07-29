@@ -154,7 +154,10 @@ function MecellemScrollGallery() {
   const isCompleteRef = useRef(false);
   const gestureBlockedRef = useRef(false);
   const lockedScrollYRef = useRef<number | null>(null);
+  const originalHtmlOverflowRef = useRef<string | null>(null);
+  const originalBodyOverflowRef = useRef<string | null>(null);
   const cooldownUntilRef = useRef(0);
+  const scrollLockFrameRef = useRef<number | null>(null);
   const releaseTimerRef = useRef<number | null>(null);
   const cooldownTimerRef = useRef<number | null>(null);
   const gestureQuietTimerRef = useRef<number | null>(null);
@@ -177,6 +180,59 @@ function MecellemScrollGallery() {
 
       const rect = sectionRef.current.getBoundingClientRect();
       return rect.top <= window.innerHeight * 0.72 && rect.bottom >= window.innerHeight * 0.28;
+    };
+
+    const releaseScrollLock = () => {
+      lockedScrollYRef.current = null;
+
+      if (originalHtmlOverflowRef.current !== null) {
+        document.documentElement.style.overflow = originalHtmlOverflowRef.current;
+        originalHtmlOverflowRef.current = null;
+      }
+
+      if (originalBodyOverflowRef.current !== null) {
+        document.body.style.overflow = originalBodyOverflowRef.current;
+        originalBodyOverflowRef.current = null;
+      }
+
+      if (scrollLockFrameRef.current) {
+        window.cancelAnimationFrame(scrollLockFrameRef.current);
+        scrollLockFrameRef.current = null;
+      }
+    };
+
+    const lockPageScroll = () => {
+      if (lockedScrollYRef.current === null) {
+        lockedScrollYRef.current = window.scrollY;
+      }
+
+      if (originalHtmlOverflowRef.current === null) {
+        originalHtmlOverflowRef.current = document.documentElement.style.overflow;
+        document.documentElement.style.overflow = "hidden";
+      }
+
+      if (originalBodyOverflowRef.current === null) {
+        originalBodyOverflowRef.current = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+      }
+    };
+
+    const holdScrollPosition = () => {
+      if (lockedScrollYRef.current === null || isCompleteRef.current) return;
+
+      window.scrollTo({ top: lockedScrollYRef.current, behavior: "instant" });
+
+      if (scrollLockFrameRef.current) {
+        window.cancelAnimationFrame(scrollLockFrameRef.current);
+      }
+
+      scrollLockFrameRef.current = window.requestAnimationFrame(() => {
+        if (lockedScrollYRef.current !== null && !isCompleteRef.current) {
+          window.scrollTo({ top: lockedScrollYRef.current, behavior: "instant" });
+        }
+
+        scrollLockFrameRef.current = null;
+      });
     };
 
     const scheduleGestureRelease = () => {
@@ -204,7 +260,7 @@ function MecellemScrollGallery() {
 
         if (activeIndexRef.current === scrollGalleryImages.length - 1) {
           isCompleteRef.current = true;
-          lockedScrollYRef.current = null;
+          releaseScrollLock();
         }
 
         cooldownTimerRef.current = window.setTimeout(() => {
@@ -235,18 +291,16 @@ function MecellemScrollGallery() {
     const handleWheel = (event: WheelEvent) => {
       if (event.deltaY <= 0) {
         wheelDeltaRef.current = 0;
-        lockedScrollYRef.current = null;
+        releaseScrollLock();
         return;
       }
 
       if (isCompleteRef.current || !isSectionActive()) return;
 
-      if (lockedScrollYRef.current === null) {
-        lockedScrollYRef.current = window.scrollY;
-      }
-
+      lockPageScroll();
       event.preventDefault();
-      window.scrollTo({ top: lockedScrollYRef.current, behavior: "instant" });
+      event.stopImmediatePropagation();
+      holdScrollPosition();
 
       if (
         gestureBlockedRef.current ||
@@ -278,18 +332,16 @@ function MecellemScrollGallery() {
 
       if (deltaY <= 0) {
         touchDeltaRef.current = 0;
-        lockedScrollYRef.current = null;
+        releaseScrollLock();
         return;
       }
 
       if (isCompleteRef.current || !isSectionActive()) return;
 
-      if (lockedScrollYRef.current === null) {
-        lockedScrollYRef.current = window.scrollY;
-      }
-
+      lockPageScroll();
       event.preventDefault();
-      window.scrollTo({ top: lockedScrollYRef.current, behavior: "instant" });
+      event.stopImmediatePropagation();
+      holdScrollPosition();
 
       if (
         gestureBlockedRef.current ||
@@ -314,7 +366,20 @@ function MecellemScrollGallery() {
       scheduleGestureRelease();
     };
 
+    const handleLockedScroll = () => {
+      if (
+        lockedScrollYRef.current === null ||
+        isCompleteRef.current ||
+        window.scrollY <= lockedScrollYRef.current
+      ) {
+        return;
+      }
+
+      holdScrollPosition();
+    };
+
     window.addEventListener("wheel", handleWheel, blockingListenerOptions);
+    window.addEventListener("scroll", handleLockedScroll, { passive: true });
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
     window.addEventListener("touchmove", handleTouchMove, blockingListenerOptions);
     window.addEventListener("touchend", handleTouchEnd);
@@ -322,6 +387,7 @@ function MecellemScrollGallery() {
 
     return () => {
       window.removeEventListener("wheel", handleWheel, { capture: true });
+      window.removeEventListener("scroll", handleLockedScroll);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove, { capture: true });
       window.removeEventListener("touchend", handleTouchEnd);
@@ -338,6 +404,12 @@ function MecellemScrollGallery() {
       if (gestureQuietTimerRef.current) {
         window.clearTimeout(gestureQuietTimerRef.current);
       }
+
+      if (scrollLockFrameRef.current) {
+        window.cancelAnimationFrame(scrollLockFrameRef.current);
+      }
+
+      releaseScrollLock();
     };
   }, [prefersReducedMotion]);
 
