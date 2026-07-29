@@ -1066,10 +1066,11 @@ main {
 }
 
 .mecellem-case {
+  --mecellem-gutter: 66px;
   position: relative;
-  width: min(100%, var(--max));
-  margin: 0 auto;
-  padding: 160px var(--gutter) var(--space-7);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 160px var(--mecellem-gutter) var(--space-7);
   overflow-x: clip;
 }
 
@@ -1292,10 +1293,9 @@ main {
 }
 
 .mecellem-scroll-reveal {
-  width: min(calc(100vw - (var(--gutter) * 2)), calc(var(--max) - (var(--gutter) * 2)));
+  width: 100%;
   display: grid;
   gap: clamp(36px, 5vw, 64px);
-  justify-self: center;
 }
 
 .mecellem-scroll-reveal__item {
@@ -1883,6 +1883,10 @@ main {
 }
 
 @media (max-width: 1099px) {
+  .mecellem-case {
+    --mecellem-gutter: 40px;
+  }
+
   .about-copy {
     width: calc(100vw - (var(--page-inset) * 2));
     max-width: none;
@@ -2211,6 +2215,7 @@ main {
 
 @media (max-width: 767px) {
   .mecellem-case {
+    --mecellem-gutter: 20px;
     padding-top: 128px;
   }
 
@@ -2229,8 +2234,7 @@ main {
   }
 
   .mecellem-showcase__track {
-    width: calc(100% + var(--gutter));
-    margin-right: calc(var(--gutter) * -1);
+    width: 100%;
     gap: 14px;
     overflow-x: auto;
     overflow-y: hidden;
