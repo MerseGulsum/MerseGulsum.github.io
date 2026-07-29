@@ -1292,29 +1292,37 @@ main {
   line-height: 1.15;
 }
 
-.mecellem-scroll-reveal {
+.mecellem-scroll-stack {
+  --stack-step: 20px;
+  --stack-card-height: calc((100vw - (var(--mecellem-gutter) * 2)) * 2304 / 4098);
   width: 100%;
   box-sizing: border-box;
   position: relative;
-  display: grid;
-  gap: clamp(28px, 3vw, 40px);
   overflow: visible;
 }
 
-.mecellem-scroll-reveal__item {
+.mecellem-scroll-stack__item {
   position: relative;
+  z-index: calc(var(--stack-index) + 1);
+  width: 100%;
+  aspect-ratio: 4098 / 2304;
   margin: 0;
   overflow: hidden;
   border: 2px solid var(--line);
   border-radius: 44px;
   background: var(--bg);
-  will-change: transform, opacity;
+  transform-origin: top center;
+  will-change: transform;
 }
 
-.mecellem-scroll-reveal__item img {
+.mecellem-scroll-stack__item + .mecellem-scroll-stack__item {
+  margin-top: calc(var(--stack-step) - var(--stack-card-height));
+}
+
+.mecellem-scroll-stack__item img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: inherit;
   object-fit: contain;
   object-position: center;
@@ -1892,6 +1900,10 @@ main {
     --mecellem-gutter: 40px;
   }
 
+  .mecellem-scroll-stack {
+    --stack-step: 18px;
+  }
+
   .about-copy {
     width: calc(100vw - (var(--page-inset) * 2));
     max-width: none;
@@ -2222,6 +2234,10 @@ main {
   .mecellem-case {
     --mecellem-gutter: 20px;
     padding-top: 128px;
+  }
+
+  .mecellem-scroll-stack {
+    --stack-step: 16px;
   }
 
   .mecellem-showcase__header {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import type { KeyboardEvent } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
 
 const galleryItems = [
   {
@@ -144,23 +144,94 @@ const editorialSections = [
 
 function MecellemScrollGallery() {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const lastScrollYRef = useRef(0);
+  const revealedRef = useRef<Set<number>>(new Set([0]));
+  const [revealedCards, setRevealedCards] = useState<Set<number>>(
+    () => new Set([0])
+  );
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      const allCards = new Set(scrollGalleryImages.map((_, index) => index));
+      revealedRef.current = allCards;
+      setRevealedCards(allCards);
+      return;
+    }
+
+    lastScrollYRef.current = window.scrollY;
+    const revealThresholds = [0, 0.2, 0.34, 0.48, 0.62, 0.76];
+
+    const revealCard = (index: number) => {
+      if (revealedRef.current.has(index)) return;
+
+      const nextRevealed = new Set(revealedRef.current);
+      nextRevealed.add(index);
+      revealedRef.current = nextRevealed;
+      setRevealedCards(nextRevealed);
+    };
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY >= lastScrollYRef.current;
+      lastScrollYRef.current = currentScrollY;
+
+      if (!isScrollingDown || !sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const progress = Math.min(
+        Math.max(
+          (viewportHeight - rect.top) / (viewportHeight + rect.height * 0.35),
+          0
+        ),
+        1
+      );
+
+      revealThresholds.forEach((threshold, index) => {
+        if (index > 0 && progress >= threshold) {
+          revealCard(index);
+        }
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prefersReducedMotion]);
 
   return (
     <section
-      className="mecellem-scroll-reveal"
+      className="mecellem-scroll-stack"
       aria-label="Mecellem product screenshots"
+      ref={sectionRef}
     >
       {scrollGalleryImages.map((image, index) => (
         <motion.figure
-          className="mecellem-scroll-reveal__item"
+          className="mecellem-scroll-stack__item"
           key={image.src}
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 64, scale: 0.98 }}
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          initial={false}
+          animate={
+            prefersReducedMotion || revealedCards.has(index)
+              ? { opacity: 1, y: 0, scale: 1 }
+              : { opacity: 1, y: 120, scale: 0.985 }
+          }
           transition={{
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1]
           }}
+          style={
+            {
+              "--stack-index": index,
+              visibility:
+                prefersReducedMotion || revealedCards.has(index)
+                  ? "visible"
+                  : "hidden"
+            } as CSSProperties
+          }
         >
           <Image
             src={image.src}
