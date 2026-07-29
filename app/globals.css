@@ -530,7 +530,14 @@ main {
   font-weight: 700;
 }
 
-.about-section__inner,
+.about-section__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .contact-cta__inner {
   display: grid;
   justify-items: center;
@@ -561,10 +568,10 @@ main {
 }
 
 .about-copy {
-  width: calc(100vw - 500px);
+  width: min(100%, calc(100vw - 500px));
   max-width: none;
   margin-block: var(--space-4);
-  margin-inline: 250px;
+  margin-inline: auto;
   color: #b0b0b0;
   font-size: clamp(1.02rem, 1.45vw, 1.42rem);
   font-weight: var(--font-weight-body);
