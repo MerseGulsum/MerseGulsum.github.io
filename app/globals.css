@@ -1341,7 +1341,7 @@ main {
 .last-mile-case__section h2 {
   max-width: 100%;
   color: var(--text);
-  font-size: clamp(calc(2.8rem - 10px), calc(5.4vw - 10px), calc(6.4rem - 10px));
+  font-size: clamp(calc(2.8rem - 20px), calc(5.4vw - 20px), calc(6.4rem - 20px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.96;
   letter-spacing: 0;
@@ -1393,7 +1393,7 @@ main {
 
 .last-mile-case__decision h2 {
   color: var(--text);
-  font-size: clamp(calc(1.25rem - 10px), calc(1.7vw - 10px), calc(1.7rem - 10px));
+  font-size: clamp(calc(1.25rem - 20px), calc(1.7vw - 20px), calc(1.7rem - 20px));
   font-weight: var(--font-weight-heavy);
   line-height: 1.15;
 }
