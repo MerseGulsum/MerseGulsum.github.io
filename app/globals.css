@@ -1263,6 +1263,7 @@ main {
   max-width: 680px;
   display: grid;
   gap: 16px;
+  justify-self: start;
 }
 
 .mecellem-editorial-copy p,
@@ -1278,6 +1279,7 @@ main {
   display: grid;
   gap: 28px;
   margin-top: 8px;
+  justify-self: start;
 }
 
 .mecellem-editorial-item {
@@ -2041,6 +2043,11 @@ main {
     width: 70%;
   }
 
+  .mecellem-editorial-copy,
+  .mecellem-editorial-list {
+    max-width: 620px;
+  }
+
   .mecellem-editorial-section > .eyebrow,
   .mecellem-editorial-content {
     grid-column: 1;
@@ -2249,6 +2256,11 @@ main {
 
   .mecellem-inline-showcase {
     width: 100%;
+  }
+
+  .mecellem-editorial-copy,
+  .mecellem-editorial-list {
+    max-width: 100%;
   }
 }
 
