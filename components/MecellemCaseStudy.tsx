@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
-import type { MotionValue } from "framer-motion";
 
 const galleryItems = [
   {
@@ -146,49 +145,201 @@ const editorialSections = [
 function MecellemScrollGallery() {
   const prefersReducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement | null>(null);
-  const lastScrollYRef = useRef(0);
-  const maxProgressRef = useRef(0);
-  const sequenceProgress = useMotionValue(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeIndexRef = useRef(0);
+  const wheelDeltaRef = useRef(0);
+  const touchStartYRef = useRef<number | null>(null);
+  const touchDeltaRef = useRef(0);
+  const isAnimatingRef = useRef(false);
+  const isCompleteRef = useRef(false);
+  const gestureBlockedRef = useRef(false);
+  const lockedScrollYRef = useRef<number | null>(null);
+  const cooldownUntilRef = useRef(0);
+  const releaseTimerRef = useRef<number | null>(null);
+  const cooldownTimerRef = useRef<number | null>(null);
+  const gestureQuietTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      sequenceProgress.set(0);
-      return;
-    }
+    if (prefersReducedMotion) return;
 
-    lastScrollYRef.current = window.scrollY;
+    const transitionDuration = 800;
+    const cooldownDuration = 200;
+    const gestureQuietDuration = 220;
+    const wheelThreshold = 100;
+    const touchThreshold = 64;
+    const blockingListenerOptions = {
+      passive: false,
+      capture: true
+    } as AddEventListenerOptions;
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY > lastScrollYRef.current;
-      lastScrollYRef.current = currentScrollY;
-
-      if (!isScrollingDown || !sectionRef.current) return;
+    const isSectionActive = () => {
+      if (!sectionRef.current) return false;
 
       const rect = sectionRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const startPoint = viewportHeight * 0.82;
-      const endPoint = rect.height * -0.08;
-      const progress = Math.min(
-        Math.max(
-          (startPoint - rect.top) / (startPoint - endPoint),
-          0
-        ),
-        1
-      );
+      return rect.top <= window.innerHeight * 0.72 && rect.bottom >= window.innerHeight * 0.28;
+    };
 
-      if (progress > maxProgressRef.current) {
-        maxProgressRef.current = progress;
-        sequenceProgress.set(progress);
+    const scheduleGestureRelease = () => {
+      if (gestureQuietTimerRef.current) {
+        window.clearTimeout(gestureQuietTimerRef.current);
+      }
+
+      gestureQuietTimerRef.current = window.setTimeout(() => {
+        if (!isAnimatingRef.current && Date.now() >= cooldownUntilRef.current) {
+          gestureBlockedRef.current = false;
+          wheelDeltaRef.current = 0;
+          touchDeltaRef.current = 0;
+        }
+      }, gestureQuietDuration);
+    };
+
+    const unlockAfterTransition = () => {
+      if (releaseTimerRef.current) {
+        window.clearTimeout(releaseTimerRef.current);
+      }
+
+      releaseTimerRef.current = window.setTimeout(() => {
+        isAnimatingRef.current = false;
+        cooldownUntilRef.current = Date.now() + cooldownDuration;
+
+        if (activeIndexRef.current === scrollGalleryImages.length - 1) {
+          isCompleteRef.current = true;
+          lockedScrollYRef.current = null;
+        }
+
+        cooldownTimerRef.current = window.setTimeout(() => {
+          wheelDeltaRef.current = 0;
+          touchDeltaRef.current = 0;
+          scheduleGestureRelease();
+        }, cooldownDuration);
+      }, transitionDuration);
+    };
+
+    const advanceSequence = () => {
+      if (isAnimatingRef.current || isCompleteRef.current) return;
+      if (Date.now() < cooldownUntilRef.current) return;
+
+      const nextIndex = activeIndexRef.current + 1;
+      if (nextIndex >= scrollGalleryImages.length) {
+        isCompleteRef.current = true;
+        return;
+      }
+
+      isAnimatingRef.current = true;
+      gestureBlockedRef.current = true;
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+      unlockAfterTransition();
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      if (event.deltaY <= 0) {
+        wheelDeltaRef.current = 0;
+        lockedScrollYRef.current = null;
+        return;
+      }
+
+      if (isCompleteRef.current || !isSectionActive()) return;
+
+      if (lockedScrollYRef.current === null) {
+        lockedScrollYRef.current = window.scrollY;
+      }
+
+      event.preventDefault();
+      window.scrollTo({ top: lockedScrollYRef.current, behavior: "instant" });
+
+      if (
+        gestureBlockedRef.current ||
+        isAnimatingRef.current ||
+        Date.now() < cooldownUntilRef.current
+      ) {
+        scheduleGestureRelease();
+        return;
+      }
+
+      wheelDeltaRef.current += event.deltaY;
+
+      if (wheelDeltaRef.current >= wheelThreshold) {
+        wheelDeltaRef.current = 0;
+        advanceSequence();
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const handleTouchStart = (event: TouchEvent) => {
+      touchStartYRef.current = event.touches[0]?.clientY ?? null;
+      touchDeltaRef.current = 0;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (touchStartYRef.current === null) return;
+
+      const currentY = event.touches[0]?.clientY ?? touchStartYRef.current;
+      const deltaY = touchStartYRef.current - currentY;
+
+      if (deltaY <= 0) {
+        touchDeltaRef.current = 0;
+        lockedScrollYRef.current = null;
+        return;
+      }
+
+      if (isCompleteRef.current || !isSectionActive()) return;
+
+      if (lockedScrollYRef.current === null) {
+        lockedScrollYRef.current = window.scrollY;
+      }
+
+      event.preventDefault();
+      window.scrollTo({ top: lockedScrollYRef.current, behavior: "instant" });
+
+      if (
+        gestureBlockedRef.current ||
+        isAnimatingRef.current ||
+        Date.now() < cooldownUntilRef.current
+      ) {
+        return;
+      }
+
+      touchDeltaRef.current += deltaY;
+      touchStartYRef.current = currentY;
+
+      if (touchDeltaRef.current >= touchThreshold) {
+        touchDeltaRef.current = 0;
+        advanceSequence();
+      }
+    };
+
+    const handleTouchEnd = () => {
+      touchStartYRef.current = null;
+      touchDeltaRef.current = 0;
+      scheduleGestureRelease();
+    };
+
+    window.addEventListener("wheel", handleWheel, blockingListenerOptions);
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, blockingListenerOptions);
+    window.addEventListener("touchend", handleTouchEnd);
+    window.addEventListener("touchcancel", handleTouchEnd);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleWheel, { capture: true });
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove, { capture: true });
+      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchcancel", handleTouchEnd);
+
+      if (releaseTimerRef.current) {
+        window.clearTimeout(releaseTimerRef.current);
+      }
+
+      if (cooldownTimerRef.current) {
+        window.clearTimeout(cooldownTimerRef.current);
+      }
+
+      if (gestureQuietTimerRef.current) {
+        window.clearTimeout(gestureQuietTimerRef.current);
+      }
     };
-  }, [prefersReducedMotion, sequenceProgress]);
+  }, [prefersReducedMotion]);
 
   return (
     <section
@@ -199,10 +350,11 @@ function MecellemScrollGallery() {
       <div className="mecellem-scroll-sequence__viewport">
         {scrollGalleryImages.map((image, index) => (
           <MecellemSequenceCard
+            activeIndex={activeIndex}
             image={image}
             index={index}
             key={image.src}
-            progress={sequenceProgress}
+            prefersReducedMotion={prefersReducedMotion}
           />
         ))}
       </div>
@@ -211,35 +363,33 @@ function MecellemScrollGallery() {
 }
 
 function MecellemSequenceCard({
+  activeIndex,
   image,
   index,
-  progress
+  prefersReducedMotion
 }: {
+  activeIndex: number;
   image: (typeof scrollGalleryImages)[number];
   index: number;
-  progress: MotionValue<number>;
+  prefersReducedMotion: boolean | null;
 }) {
-  const step = 1 / (scrollGalleryImages.length - 1);
-  const isFirstCard = index === 0;
-  const isLastCard = index === scrollGalleryImages.length - 1;
-  const y = useTransform(
-    progress,
-    isFirstCard
-      ? [0, step]
-      : isLastCard
-        ? [(index - 1) * step, 1]
-        : [(index - 1) * step, index * step, (index + 1) * step],
-    isFirstCard
-      ? ["0%", "-105%"]
-      : isLastCard
-        ? ["105%", "0%"]
-        : ["105%", "0%", "-105%"]
-  );
+  const y =
+    index < activeIndex
+      ? "-105%"
+      : index === activeIndex
+        ? "0%"
+        : "105%";
 
   return (
     <motion.figure
       className="mecellem-scroll-sequence__card"
-      style={{ y, zIndex: index + 1 }}
+      animate={{ y: prefersReducedMotion ? (index === 0 ? "0%" : "105%") : y }}
+      initial={false}
+      style={{ zIndex: index + 1 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1]
+      }}
     >
       <Image
         src={image.src}
