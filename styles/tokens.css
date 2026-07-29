@@ -1,0 +1,23 @@
+:root {
+  --bg: var(--color-black-950);
+  --bg-soft: var(--color-black-800);
+  --bg-page-start: var(--color-black-900);
+  --bg-page-end: var(--color-black-850);
+  --surface: var(--color-black-700);
+  --surface-2: var(--color-black-650);
+  --surface-alpha: var(--alpha-surface);
+  --surface-alpha-soft: var(--alpha-surface-soft);
+  --text: var(--color-warm-50);
+  --text-muted: var(--color-warm-300);
+  --text-soft: var(--color-warm-500);
+  --line: var(--alpha-line);
+  --line-strong: var(--alpha-line-strong);
+  --accent: var(--color-lime-300);
+  --accent-2: var(--color-coral-400);
+  --accent-soft: var(--alpha-accent-soft);
+  --error: var(--color-error-400);
+  --focus: var(--color-lime-300);
+  --max: var(--layout-max);
+  --gutter: var(--page-gutter);
+  --page-inset: var(--page-gutter);
+}
