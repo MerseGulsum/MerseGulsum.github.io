@@ -1211,8 +1211,10 @@ main {
 }
 
 .mecellem-editorial-flow {
+  width: calc(100vw - (var(--gutter) * 2));
   display: grid;
   gap: clamp(76px, 9vw, 124px);
+  margin-left: calc((100% - (100vw - (var(--gutter) * 2))) / 2);
   margin-top: clamp(88px, 11vw, 156px);
 }
 
@@ -1247,16 +1249,17 @@ main {
 }
 
 .mecellem-editorial-section h2 {
-  max-width: 760px;
+  max-width: none;
   color: var(--text);
   font-size: clamp(2.8rem, 5.4vw, 6.4rem);
   font-weight: var(--font-weight-heavy);
   line-height: 0.96;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .mecellem-editorial-copy {
-  max-width: 720px;
+  width: min(100%, 720px);
   display: grid;
   gap: 16px;
 }
@@ -1269,7 +1272,7 @@ main {
 }
 
 .mecellem-editorial-list {
-  max-width: 720px;
+  width: min(100%, 720px);
   display: grid;
   gap: 28px;
   margin-top: 8px;
@@ -2070,9 +2073,18 @@ main {
     gap: 16px;
   }
 
+  .mecellem-editorial-flow {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .mecellem-editorial-section > .eyebrow,
   .mecellem-editorial-content {
     grid-column: 1;
+  }
+
+  .mecellem-editorial-section h2 {
+    white-space: normal;
   }
 
   .case-facts,
