@@ -1351,6 +1351,10 @@ main {
   margin-bottom: 22px;
 }
 
+.last-mile-case__section:first-child .eyebrow {
+  margin-bottom: 24px;
+}
+
 .last-mile-case__section:first-child .eyebrow,
 .last-mile-case__section:first-child h1,
 .last-mile-case__section:first-child .last-mile-case__copy {
@@ -1367,6 +1371,10 @@ main {
 .last-mile-case__copy,
 .last-mile-case__decisions {
   margin-top: 22px;
+}
+
+.last-mile-case__section:first-child .last-mile-case__copy {
+  margin-top: 16px;
 }
 
 .last-mile-case__copy p,
