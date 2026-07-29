@@ -218,7 +218,16 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
               </div>
             ) : (
               <div className={styles.buttonClip}>
-                {project.slug === "ai-product-experiment" ? (
+                {project.slug === "logistics-product" ? (
+                  <Link
+                    className={`button-link ${styles.button} ${styles.buttonTemporary}`}
+                    href="/projects/last-mile-delivery-app"
+                    data-project-button
+                  >
+                    View Project
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </Link>
+                ) : project.slug === "ai-product-experiment" ? (
                   <Link
                     className={`button-link ${styles.button} ${styles.buttonTemporary}`}
                     href="/projects/ai-product-experiment"

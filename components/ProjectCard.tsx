@@ -10,6 +10,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const title = project.title;
   const subtitle = isMecellem ? "New Mind AI" : undefined;
   const tools = isMecellem ? ["Adobe XD", "Gemini", "ChatGPT"] : project.skills;
+  const projectHref = project.slug === "logistics-product" ? "/projects/last-mile-delivery-app" : `/projects/${project.slug}`;
 
   return (
     <article className="project-card">
@@ -49,7 +50,7 @@ export function ProjectCard({ project }: { project: Project }) {
             </Link>
           </>
         ) : (
-          <Link className="button-link project-card__cta" href={`/projects/${project.slug}`}>
+          <Link className="button-link project-card__cta" href={projectHref}>
             View Project
             <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
