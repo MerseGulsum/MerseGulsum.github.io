@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "Last Mile Delivery App"
 };
@@ -97,6 +99,17 @@ export default function LastMileDeliveryAppPage() {
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
+            )}
+            {index === 0 && (
+              <Image
+                className="last-mile-case__overview-image"
+                src="/projects/last-mile-delivery-app/qr.png"
+                alt="QR verification screen from the Last Mile Delivery App."
+                width={5000}
+                height={3500}
+                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1099px) 380px, 480px"
+                decoding="async"
+              />
             )}
             {section.list && (
               <ul className="last-mile-case__list">

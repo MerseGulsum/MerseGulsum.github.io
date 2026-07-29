@@ -1320,6 +1320,13 @@ main {
   text-align: left;
 }
 
+.last-mile-case__section:first-child {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+  column-gap: 48px;
+  align-items: center;
+}
+
 .last-mile-case__section + .last-mile-case__section {
   margin-top: clamp(76px, 9vw, 124px);
 }
@@ -1342,6 +1349,12 @@ main {
 
 .last-mile-case__section .eyebrow {
   margin-bottom: 22px;
+}
+
+.last-mile-case__section:first-child .eyebrow,
+.last-mile-case__section:first-child h1,
+.last-mile-case__section:first-child .last-mile-case__copy {
+  grid-column: 1;
 }
 
 .last-mile-case__copy,
@@ -1387,6 +1400,15 @@ main {
 
 .last-mile-case__decision p {
   margin-top: 10px;
+}
+
+.last-mile-case__overview-image {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  width: min(100%, 480px);
+  height: auto;
+  justify-self: end;
+  align-self: center;
 }
 
 .projects-page__header,
@@ -1965,6 +1987,10 @@ main {
     --last-mile-gutter: 40px;
   }
 
+  .last-mile-case__section:first-child {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  }
+
   .about-copy {
     width: calc(100vw - (var(--page-inset) * 2));
     max-width: none;
@@ -2308,6 +2334,16 @@ main {
 
   .last-mile-case {
     --last-mile-gutter: 20px;
+  }
+
+  .last-mile-case__section:first-child {
+    display: block;
+  }
+
+  .last-mile-case__overview-image {
+    width: 100%;
+    max-width: none;
+    margin-top: 32px;
   }
 
   .mecellem-showcase__header {
