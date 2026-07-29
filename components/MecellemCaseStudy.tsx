@@ -28,6 +28,92 @@ const galleryItems = [
   }
 ];
 
+const editorialSections = [
+  {
+    eyebrow: "Overview",
+    title: "Designing AI for Legal Work",
+    body: [
+      "Mecellem is an AI-powered legal intelligence platform built to simplify how legal professionals discover, organize, and interact with complex legal information.",
+      "As Product Designer, I collaborated with AI engineers and software developers to transform advanced AI capabilities into intuitive product experiences that feel reliable, transparent and effortless."
+    ]
+  },
+  {
+    title: "Product Context",
+    body: [
+      "Legal professionals work across contracts, legislation, case law and institutional knowledge every day.",
+      "Mecellem brings these fragmented resources together into a unified AI-assisted workspace where information becomes easier to discover, understand and act upon.",
+      "Rather than replacing expertise, AI supports professionals by reducing complexity while keeping them fully in control."
+    ]
+  },
+  {
+    title: "Design Approach",
+    body: [
+      "The objective was not simply to introduce AI into legal software.",
+      "It was to make sophisticated technology feel natural inside everyday professional workflows.",
+      "Every interaction was designed around three principles: clarity, trust and efficiency.",
+      "Information hierarchy, interaction patterns and visual consistency were carefully refined to reduce cognitive load without sacrificing functionality."
+    ]
+  },
+  {
+    title: "Design Principles",
+    items: [
+      {
+        title: "Clarity",
+        body: "Reducing visual complexity across information-dense legal interfaces."
+      },
+      {
+        title: "Trust",
+        body: "Helping users understand and verify AI-generated insights before taking action."
+      },
+      {
+        title: "Efficiency",
+        body: "Designing workflows that reduce repetitive tasks and accelerate decision-making."
+      },
+      {
+        title: "Scalability",
+        body: "Creating reusable components and interaction patterns for future product growth."
+      }
+    ]
+  },
+  {
+    title: "Selected Highlights",
+    items: [
+      {
+        title: "AI-assisted Search",
+        body: "Designing search experiences that help legal professionals reach relevant information without being overwhelmed by complex data."
+      },
+      {
+        title: "Information Architecture",
+        body: "Organizing dense legal content into structures that are easier to navigate, understand and manage."
+      },
+      {
+        title: "Legal Workflow Design",
+        body: "Simplifying professional workflows while preserving the detail and control required in legal work."
+      },
+      {
+        title: "Dashboard Experience",
+        body: "Creating clear visual hierarchies that help users monitor information and identify important actions quickly."
+      },
+      {
+        title: "Design System",
+        body: "Building reusable components and patterns that maintain consistency across the platform."
+      },
+      {
+        title: "Interaction Patterns",
+        body: "Designing predictable interactions that make advanced product capabilities easier to learn and use."
+      }
+    ]
+  },
+  {
+    title: "Reflection",
+    body: [
+      "Working on Mecellem strengthened one belief that continues to shape my design process:",
+      "Great AI products are not defined by how intelligent they are.",
+      "They are defined by how naturally people can understand, trust and use them."
+    ]
+  }
+];
+
 export function MecellemCaseStudy() {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -107,6 +193,32 @@ export function MecellemCaseStudy() {
           ))}
         </div>
       </section>
+
+      <div className="mecellem-editorial-flow">
+        {editorialSections.map((section) => (
+          <section className="mecellem-editorial-section" key={section.title}>
+            {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
+            <h2>{section.title}</h2>
+            {section.body && (
+              <div className="mecellem-editorial-copy">
+                {section.body.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            )}
+            {section.items && (
+              <div className="mecellem-editorial-list">
+                {section.items.map((item) => (
+                  <div className="mecellem-editorial-item" key={item.title}>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        ))}
+      </div>
     </article>
   );
 }
