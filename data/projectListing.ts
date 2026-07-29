@@ -2,6 +2,7 @@ import { projects } from "@/data/projects";
 import type { ProjectVisualKind } from "@/data/cases/types";
 
 export type ProjectListingItem = {
+  slug: string;
   index: string;
   title: string;
   category: string;
@@ -44,6 +45,7 @@ export const projectListing: ProjectListingItem[] = listingSlugs.flatMap((slug) 
   if (!project) return [];
 
   return {
+    slug: project.slug,
     index: project.index,
     title: project.title,
     category: content.category,

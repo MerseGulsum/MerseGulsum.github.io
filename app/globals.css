@@ -1073,36 +1073,8 @@ main {
   overflow-x: clip;
 }
 
-.mecellem-hero {
-  display: grid;
-  min-height: calc(100svh - 160px);
-  align-items: start;
-}
-
-.mecellem-visual {
-  position: relative;
-  margin: 0;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--line);
-}
-
-.mecellem-visual img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.mecellem-visual--hero {
-  aspect-ratio: 1.175;
-  border-radius: 44px;
-}
-
 .mecellem-showcase {
-  padding-top: clamp(80px, 11vw, 156px);
-  border-top: 1px solid var(--line);
+  padding-top: 0;
 }
 
 .mecellem-showcase__header {
@@ -1857,10 +1829,6 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .mecellem-hero {
-    min-height: auto;
-  }
-
   .mecellem-showcase__track {
     gap: 14px;
   }
@@ -2120,14 +2088,6 @@ main {
 @media (max-width: 767px) {
   .mecellem-case {
     padding-top: 128px;
-  }
-
-  .mecellem-visual--hero {
-    border-radius: 28px;
-  }
-
-  .mecellem-showcase {
-    padding-top: 72px;
   }
 
   .mecellem-showcase__header {

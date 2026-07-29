@@ -218,16 +218,27 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
               </div>
             ) : (
               <div className={styles.buttonClip}>
-                <a
-                  className={`button-link ${styles.button} ${styles.buttonTemporary}`}
-                  href="#"
-                  onClick={handleTemporaryProjectClick}
-                  aria-disabled="true"
-                  data-project-button
-                >
-                  View Project
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </a>
+                {project.slug === "ai-product-experiment" ? (
+                  <Link
+                    className={`button-link ${styles.button} ${styles.buttonTemporary}`}
+                    href="/projects/ai-product-experiment"
+                    data-project-button
+                  >
+                    View Project
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </Link>
+                ) : (
+                  <a
+                    className={`button-link ${styles.button} ${styles.buttonTemporary}`}
+                    href="#"
+                    onClick={handleTemporaryProjectClick}
+                    aria-disabled="true"
+                    data-project-button
+                  >
+                    View Project
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                )}
               </div>
             )}
           </div>
