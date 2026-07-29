@@ -15,7 +15,8 @@ export function ProjectVisual({
 }) {
   const coverImageBySlug: Partial<Record<Project["slug"], string>> = {
     "provia-career": "/projects/provia-career/provia-cover.png",
-    "logistics-product": "/projects/logistics-product/kargo-home.png"
+    "logistics-product": "/projects/logistics-product/kargo-home.png",
+    "ai-product-experiment": "/projects/mecellem/mecellem.png"
   };
   const coverImage = useCoverImage ? coverImageBySlug[project.slug] : undefined;
   const title = displayTitle ?? project.title;

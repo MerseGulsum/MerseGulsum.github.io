@@ -13,12 +13,14 @@ export function ProjectEditorialVisual({ project }: { project: ProjectListingIte
       aria-hidden="true"
       data-project-visual-art
     >
-      {project.visual === "career" || project.visual === "logistics" ? (
+      {project.visual === "career" || project.visual === "logistics" || project.visual === "ai" ? (
         <Image
           src={
             project.visual === "career"
               ? "/projects/provia-career/provia-career-2.png"
-              : "/projects/logistics-product/kargo-project.png"
+              : project.visual === "logistics"
+                ? "/projects/logistics-product/kargo-project.png"
+                : "/projects/mecellem/mecellem-project.png"
           }
           alt=""
           fill
