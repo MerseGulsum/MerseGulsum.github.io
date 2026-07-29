@@ -12,7 +12,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: "Merse Gülsüm - Product Designer & HMI Designer",
+    default: "Merse Gülsüm — Product Designer",
     template: "%s | Merse Gülsüm"
   },
   description:
