@@ -1292,6 +1292,17 @@ main {
   line-height: 1.15;
 }
 
+.mecellem-inline-showcase {
+  width: 50%;
+  margin-inline: auto;
+}
+
+.mecellem-inline-showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .projects-page__header,
 .contact-page__intro {
   margin-bottom: var(--space-6);
@@ -2026,6 +2037,10 @@ main {
     margin-left: 0;
   }
 
+  .mecellem-inline-showcase {
+    width: 70%;
+  }
+
   .mecellem-editorial-section > .eyebrow,
   .mecellem-editorial-content {
     grid-column: 1;
@@ -2230,6 +2245,10 @@ main {
     height: clamp(460px, 112vw, 580px);
     border-radius: 28px;
     scroll-snap-align: start;
+  }
+
+  .mecellem-inline-showcase {
+    width: 100%;
   }
 }
 

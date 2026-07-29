@@ -220,6 +220,17 @@ export function MecellemCaseStudy() {
                 )}
               </div>
             </section>
+            {section.title === "Design Principles" && (
+              <div className="mecellem-inline-showcase">
+                <Image
+                  src="/projects/mecellem/ara-mecellem-2.png"
+                  alt="Mecellem product interface showcase."
+                  width={7000}
+                  height={5000}
+                  sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) 70vw, 50vw"
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>
