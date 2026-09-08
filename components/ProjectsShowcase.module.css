@@ -205,7 +205,7 @@
   display: block;
   margin: 0;
   color: var(--text);
-  font-size: 62px;
+  font-size: 31px;
   font-weight: var(--font-weight-heavy);
   line-height: 1.12;
   overflow-wrap: break-word;
@@ -274,7 +274,7 @@
 
   .title {
     max-width: 100%;
-    font-size: clamp(2.25rem, 11.5vw, 3.35rem);
+    font-size: clamp(1.125rem, 5.75vw, 1.675rem);
     white-space: normal;
   }
 
