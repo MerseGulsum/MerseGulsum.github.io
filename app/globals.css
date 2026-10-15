@@ -520,6 +520,7 @@ main {
 .about-section {
   width: 100%;
   padding-inline: 0;
+  padding-bottom: var(--space-5);
 }
 
 .about-section__inner {
@@ -577,8 +578,7 @@ main {
 
 .selected-projects {
   position: relative;
-  min-height: 100vh;
-  padding: var(--space-7) 0;
+  padding: var(--space-5) 0 var(--space-7);
   overflow: hidden;
 }
 

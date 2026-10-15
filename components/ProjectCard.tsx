@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const isProvia = project.slug === "provia-career";
   const isMecellem = project.slug === "ai-product-experiment";
   const title = project.title;
-  const subtitle = isMecellem ? "New Mind AI" : undefined;
+  const subtitle = isMecellem ? "New Mind AI" : isProvia ? "AI Mock Interview Platform" : undefined;
   const tools = isMecellem ? ["Adobe XD", "Gemini", "ChatGPT"] : project.skills;
   const projectHref = project.slug === "logistics-product" ? "/projects/last-mile-delivery-app" : `/projects/${project.slug}`;
 
@@ -41,17 +41,17 @@ export function ProjectCard({ project }: { project: Project }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visit Project
+              Live Site
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
             <Link className="button-link project-card__cta" href="/projects/provia-career">
-              View Project
+              Case Study
               <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </>
         ) : (
           <Link className="button-link project-card__cta" href={projectHref}>
-            View Project
+            Case Study
             <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         )}

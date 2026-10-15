@@ -13,9 +13,9 @@ export const projects: Project[] = [
     title: "Provia Career",
     year: "2026",
     role: "Product design, UX structure, interface direction",
-    category: "Product Design / Career Platform",
+    category: "AI · Career Platform",
     description:
-      "A focused career experience that helps candidates understand roles, paths and next steps with less friction.",
+      "An AI-powered mock interview platform where candidates practice real interview scenarios, get instant feedback and track their progress.",
     summary: "A career platform concept shaped around clarity, confidence and guided candidate journeys.",
     shortDescription:
       "Provia Career is a digital career platform designed to help people discover opportunities, understand professional paths and take clearer steps toward their goals. The product brings career exploration, guidance and application-related experiences together within a structured and accessible interface.",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     title: "Mecellem",
     year: "2026",
     role: "AI workflow design, prototype strategy, product UX",
-    category: "AI UX / Prototype",
+    category: "AI · Prototype",
     description:
       "An AI-assisted product workflow for exploring, comparing and refining interface ideas with human control.",
     summary: "An AI workflow concept that keeps exploration fast while preserving designer judgment and traceability.",

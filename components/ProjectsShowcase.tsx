@@ -190,7 +190,7 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
                       rel="noopener noreferrer"
                       aria-label={`Visit ${project.title} in a new tab`}
                     >
-                      Visit Project
+                      Live Site
                       <ArrowUpRight size={16} aria-hidden="true" />
                     </a>
                     <Link
@@ -198,7 +198,7 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
                       href="/projects/provia-career"
                       aria-label="View Provia Career case study"
                     >
-                      View Project
+                      Case Study
                       <ArrowUpRight size={16} aria-hidden="true" />
                     </Link>
                   </div>
@@ -211,7 +211,7 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
                     aria-label={`Visit ${project.title} in a new tab`}
                     data-project-button
                   >
-                    Visit Project
+                    Live Site
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </a>
                 )}
@@ -224,7 +224,7 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
                     href="/projects/last-mile-delivery-app"
                     data-project-button
                   >
-                    View Project
+                    Case Study
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </Link>
                 ) : project.slug === "ai-product-experiment" ? (
@@ -233,7 +233,7 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
                     href="/projects/ai-product-experiment"
                     data-project-button
                   >
-                    View Project
+                    Case Study
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </Link>
                 ) : (
@@ -244,7 +244,7 @@ export function ProjectsShowcase({ projects }: { projects: ProjectListingItem[] 
                     aria-disabled="true"
                     data-project-button
                   >
-                    View Project
+                    Case Study
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </a>
                 )}
