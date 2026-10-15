@@ -1763,6 +1763,16 @@ main {
   resize: vertical;
 }
 
+/* Keep browser autofill from painting fields blue */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px #121214 inset;
+  caret-color: var(--text);
+  transition: background-color 9999s ease-out 0s;
+}
+
 .field input:focus,
 .field textarea:focus {
   border-color: var(--accent);

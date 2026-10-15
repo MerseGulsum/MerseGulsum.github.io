@@ -60,9 +60,14 @@ export function ContactForm() {
     setLoading(true);
     setNotice("");
 
+    // Never leave the button stuck on "Sending..."; give up after 25 seconds
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 25000);
+
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
+        signal: controller.signal,
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           name: `${fields.name.trim()} ${fields.surname.trim()}`,
@@ -86,8 +91,9 @@ export function ContactForm() {
       setNotice("Thank you! Your message has been sent. I'll get back to you as soon as possible.");
     } catch {
       setNoticeType("error");
-      setNotice(`Something went wrong. Please try again or email me at ${CONTACT_EMAIL}.`);
+      setNotice(`Your message couldn't be sent right now. Please email me directly at ${CONTACT_EMAIL}.`);
     } finally {
+      window.clearTimeout(timeout);
       setLoading(false);
     }
   };
