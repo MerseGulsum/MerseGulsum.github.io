@@ -77,6 +77,17 @@ function GeminiLogo() {
   return <path d="M16 4c1.4 6.2 5.8 10.6 12 12-6.2 1.4-10.6 5.8-12 12-1.4-6.2-5.8-10.6-12-12 6.2-1.4 10.6-5.8 12-12Z" />;
 }
 
+function ClaudeLogo() {
+  // Simple radiating spark: 6 rounded rays through the center
+  return (
+    <g>
+      {[0, 30, 60, 90, 120, 150].map((angle) => (
+        <rect key={angle} x="14.6" y="4" width="2.8" height="24" rx="1.4" transform={`rotate(${angle} 16 16)`} />
+      ))}
+    </g>
+  );
+}
+
 function DefaultLogo() {
   return (
     <>
@@ -98,6 +109,7 @@ function ToolLogo({ name }: { name: string }) {
   if (name === "ChatGPT") return <ChatGPTLogo />;
   if (name === "Blender") return <BlenderLogo />;
   if (name === "Gemini") return <GeminiLogo />;
+  if (name === "Claude") return <ClaudeLogo />;
   return <DefaultLogo />;
 }
 

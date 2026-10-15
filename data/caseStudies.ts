@@ -176,7 +176,7 @@ export const simpleCases: Record<string, SimpleCase> = {
       { label: "Role", value: "Product Designer (Freelance)" },
       { label: "Year", value: "2026" },
       { label: "Platform", value: "Web & Mobile" },
-      { label: "Tools", value: "Figma" }
+      { label: "Tools", value: "Figma, Claude" }
     ],
     hero: { placeholder: "Cover visual", alt: "Kepenk storefront template families.", width: 1600, height: 1000 },
     overview: [

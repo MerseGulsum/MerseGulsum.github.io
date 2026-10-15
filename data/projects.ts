@@ -104,7 +104,7 @@ export const projects: Project[] = [
     gallery: [],
     imageAlt: "Kepenk storefront template families.",
     visual: "commerce",
-    skills: ["Figma"],
+    skills: ["Figma", "Claude"],
     services: ["Design Systems", "Web App Design", "Mobile App Design"],
     heroColor: "#d9ff63",
     nextProject: "kepenk-merchant-panel"
