@@ -87,9 +87,9 @@ export const projects: Project[] = [
     title: "Mecellem",
     year: "2026",
     role: "AI workflow design, prototype strategy, product UX",
-    category: "AI · Prototype",
+    category: "AI · Legal Platform",
     description:
-      "An AI-assisted product workflow for exploring, comparing and refining interface ideas with human control.",
+      "An AI-powered legal intelligence platform that helps legal professionals search, organize and work with complex legal information.",
     summary: "An AI workflow concept that keeps exploration fast while preserving designer judgment and traceability.",
     shortDescription:
       "An experimental digital product exploring how AI-assisted workflows can support research, ideation, interface generation and faster product-design decisions.",

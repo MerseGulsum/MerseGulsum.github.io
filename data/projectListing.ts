@@ -17,7 +17,7 @@ const listingContent = {
   "provia-career": {
     category: "Product Design",
     description:
-      "Provia Career is a digital platform designed to simplify career discovery, professional growth and job exploration through an intuitive, accessible and thoughtfully crafted user experience."
+      "An AI-powered mock interview platform where candidates practice real interview scenarios, get instant feedback and track their progress."
   },
   "logistics-product": {
     category: "Experience Design",
@@ -25,9 +25,9 @@ const listingContent = {
       "A reserved space for a future case study focused on structure, clarity and high-quality interface storytelling."
   },
   "ai-product-experiment": {
-    category: "Product Strategy",
+    category: "Product Design",
     description:
-      "A reserved space for a future product story built around focused hierarchy, motion restraint and premium presentation."
+      "An AI-powered legal intelligence platform that helps legal professionals search, organize and work with complex legal information."
   }
 } satisfies Record<string, { category: string; description: string }>;
 
