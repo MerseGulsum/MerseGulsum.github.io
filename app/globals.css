@@ -1724,11 +1724,14 @@ main {
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: start;
   gap: 16px;
 }
 
+/* align-content: start keeps inputs the same height when a neighbouring field shows an error */
 .field {
   display: grid;
+  align-content: start;
   gap: 10px;
 }
 
@@ -1801,6 +1804,22 @@ main {
   color: var(--text-muted);
   font-size: 0.9rem;
   line-height: 1.5;
+}
+
+.form-notice--success {
+  color: var(--accent);
+}
+
+.form-notice--error {
+  color: var(--error);
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .about-page {

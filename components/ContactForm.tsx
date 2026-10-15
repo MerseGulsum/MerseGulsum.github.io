@@ -10,6 +10,13 @@ type Fields = {
   message: string;
 };
 
+// Messages are delivered by FormSubmit (formsubmit.co) straight to this inbox.
+// The very first submission sends an activation email to this address; click "Activate" once.
+const CONTACT_EMAIL = "gulsumkocan.123@gmail.com";
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+
+type NoticeType = "info" | "success" | "error";
+
 const initialFields: Fields = {
   name: "",
   surname: "",
@@ -22,6 +29,8 @@ export function ContactForm() {
   const [touched, setTouched] = useState<Partial<Record<keyof Fields, boolean>>>({});
   const [loading, setLoading] = useState(false);
   const [notice, setNotice] = useState("");
+  const [noticeType, setNoticeType] = useState<NoticeType>("info");
+  const [honeypot, setHoneypot] = useState("");
 
   const errors = useMemo(() => validate(fields), [fields]);
   const hasErrors = Object.keys(errors).length > 0;
@@ -31,26 +40,71 @@ export function ContactForm() {
     setNotice("");
   };
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setTouched({ name: true, surname: true, email: true, message: true });
 
     if (hasErrors) {
+      setNoticeType("error");
       setNotice("Please fix the highlighted fields before continuing.");
       return;
     }
 
+    // Bots fill the hidden field; quietly pretend success
+    if (honeypot) {
+      setNoticeType("success");
+      setNotice("Thank you! Your message has been sent.");
+      return;
+    }
+
     setLoading(true);
-    window.setTimeout(() => {
+    setNotice("");
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: `${fields.name.trim()} ${fields.surname.trim()}`,
+          email: fields.email.trim(),
+          message: fields.message.trim(),
+          _replyto: fields.email.trim(),
+          _subject: `New portfolio message from ${fields.name.trim()} ${fields.surname.trim()}`,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.success === "false" || result.success === false) {
+        throw new Error("send failed");
+      }
+
+      setFields(initialFields);
+      setTouched({});
+      setNoticeType("success");
+      setNotice("Thank you! Your message has been sent. I'll get back to you as soon as possible.");
+    } catch {
+      setNoticeType("error");
+      setNotice(`Something went wrong. Please try again or email me at ${CONTACT_EMAIL}.`);
+    } finally {
       setLoading(false);
-      setNotice(
-        "Demo only: no message was sent. Connect an email service or a Next.js server action to enable delivery."
-      );
-    }, 650);
+    }
   };
 
   return (
     <form className="contact-form" onSubmit={submit} noValidate>
+      <div className="form-honeypot" aria-hidden="true">
+        <label htmlFor="company">Company</label>
+        <input
+          id="company"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(event) => setHoneypot(event.target.value)}
+        />
+      </div>
       <div className="form-grid">
         <Field
           id="name"
@@ -100,11 +154,11 @@ export function ContactForm() {
         ) : null}
       </div>
       <button className="button-reset contact-form__submit" type="submit" disabled={loading}>
-        {loading ? "Checking..." : "Send Message"}
+        {loading ? "Sending..." : "Send Message"}
         <Send size={16} aria-hidden="true" />
       </button>
       {notice ? (
-        <p className="form-notice" role="status" aria-live="polite">
+        <p className={`form-notice form-notice--${noticeType}`} role="status" aria-live="polite">
           {notice}
         </p>
       ) : null}
