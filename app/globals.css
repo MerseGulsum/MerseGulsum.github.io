@@ -403,15 +403,18 @@ main {
   transition: background 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 180ms var(--ease-out);
 }
 
+/* Manrope sits slightly low at line-height 1, so nudge text and icon to share one optical center */
 .social-link span {
   display: block;
   line-height: 1;
+  transform: translateY(-1px);
 }
 
 .social-link svg {
   flex-shrink: 0;
   width: 14px;
   height: 14px;
+  transform: translateY(1px);
 }
 
 .social-link:hover {
