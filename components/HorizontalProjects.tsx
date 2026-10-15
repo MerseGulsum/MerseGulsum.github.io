@@ -8,7 +8,10 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import { createHorizontalProjects } from "@/lib/animations/horizontalProjects";
 
-const homeProjects = projects.filter((project) => project.slug !== "mehir-finance");
+const hiddenOnHome = ["mehir-finance", "logistics-product"];
+const homeProjects = projects
+  .filter((project) => !hiddenOnHome.includes(project.slug))
+  .map((project, i) => ({ ...project, index: String(i + 1).padStart(2, "0") }));
 
 export function HorizontalProjects() {
   const sectionRef = useRef<HTMLElement>(null);

@@ -12,7 +12,8 @@ export function createHorizontalProjects(
 
     mm.add("(min-width: 900px)", () => {
       const distance = Math.max(0, track.scrollWidth - window.innerWidth + 96);
-      gsap.to(track, {
+      // Only pin and slide when the cards don't fit on screen.
+      if (distance > 120) gsap.to(track, {
         x: -distance,
         ease: "none",
         scrollTrigger: {
@@ -38,7 +39,7 @@ export function createHorizontalProjects(
         }
       });
 
-      gsap.to(".project-card .project-visual__panel--side", {
+      if (distance > 120) gsap.to(".project-card .project-visual__panel--side", {
         xPercent: -10,
         ease: "none",
         scrollTrigger: {
