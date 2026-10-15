@@ -1,5 +1,8 @@
 export type CaseImage = {
-  src: string;
+  /** Leave empty to show a reserved "coming soon" area */
+  src?: string;
+  /** Label shown inside the reserved area */
+  placeholder?: string;
   alt: string;
   width: number;
   height: number;
@@ -160,6 +163,102 @@ export const simpleCases: Record<string, SimpleCase> = {
         height: 852,
         size: "half"
       }
+    ],
+    next: { slug: "kepenk-storefront-kits", href: "/projects/kepenk-storefront-kits", title: "Kepenk Storefront Kits" }
+  },
+
+  "kepenk-storefront-kits": {
+    slug: "kepenk-storefront-kits",
+    title: "Kepenk Storefront Kits",
+    category: "Design System · E-commerce",
+    tagline: "Storefront template families and the design system behind them, for an e-commerce platform.",
+    meta: [
+      { label: "Role", value: "Product Designer (Freelance)" },
+      { label: "Year", value: "2026" },
+      { label: "Platform", value: "Web & Mobile" },
+      { label: "Tools", value: "Figma" }
+    ],
+    hero: { placeholder: "Cover visual", alt: "Kepenk storefront template families.", width: 1600, height: 1000 },
+    overview: [
+      "Kepenk is an e-commerce platform where merchants launch their own online store. I designed six new storefront template families and the token-based design system they are built on.",
+      "Merchants pick a template, a color palette, a corner radius and light or dark mode, and a complete website is generated automatically."
+    ],
+    problem: {
+      intro: "Merchants want a professional, on-brand store without hiring a designer or building every page by hand.",
+      points: [
+        "Existing templates were inconsistent and hard to adapt to different brands.",
+        "Every customization risked breaking layout and spacing.",
+        "Pages had to work in full-width and centered layouts, on desktop and mobile."
+      ]
+    },
+    solution: {
+      intro: "Six template families built on one shared, token-based design system.",
+      points: [
+        "Template families such as Modern, Minimal, Technical and Soft, each with multiple combinations.",
+        "A single token-bound palette and a 4–8–12–16 radius system.",
+        "A consistent grid and margin system that adapts to page width.",
+        "Mobile designed alongside every page."
+      ]
+    },
+    contributions: [
+      "Design foundations: color, typography, radius and grid",
+      "Reusable modules like top bar, navigation and product cards",
+      "Six storefront template families",
+      "Theme options: palette, radius, light and dark",
+      "Responsive desktop and mobile layouts"
+    ],
+    gallery: [
+      { placeholder: "Template families overview", alt: "Kepenk template families overview.", width: 1600, height: 1000 },
+      { placeholder: "Design system foundations", alt: "Kepenk design system foundations.", width: 1600, height: 1200, size: "half" },
+      { placeholder: "Mobile pages", alt: "Kepenk storefront mobile pages.", width: 1600, height: 1200, size: "half" }
+    ],
+    next: { slug: "kepenk-merchant-panel", href: "/projects/kepenk-merchant-panel", title: "Kepenk Merchant Panel" }
+  },
+
+  "kepenk-merchant-panel": {
+    slug: "kepenk-merchant-panel",
+    title: "Kepenk Merchant Panel",
+    category: "B2B SaaS · Dashboard",
+    tagline: "A simpler admin panel for merchants running their online store on Kepenk.",
+    meta: [
+      { label: "Role", value: "Product Designer (Freelance)" },
+      { label: "Year", value: "2026" },
+      { label: "Platform", value: "Web App" },
+      { label: "Tools", value: "Figma" }
+    ],
+    hero: { placeholder: "Cover visual", alt: "Kepenk merchant admin panel.", width: 1600, height: 1000 },
+    overview: [
+      "The merchant panel is where store owners manage orders, products and their storefront every day. I am redesigning it from scratch, with a new design system focused on clarity and speed.",
+      "The work moves page by page, starting with navigation and the dashboard."
+    ],
+    problem: {
+      intro: "Merchants spend hours in the panel, but everyday tasks took more effort than they should.",
+      points: [
+        "Navigation and screens had grown complex over time.",
+        "Components looked and behaved differently from page to page.",
+        "Common tasks took too many steps."
+      ]
+    },
+    solution: {
+      intro: "A calmer, consistent panel built on its own component system.",
+      points: [
+        "A clear sidebar with inline accordion groups.",
+        "Borderless cards, filled primary actions and readable status chips.",
+        "A strict 4-point system for spacing, sizing and radius.",
+        "Every page designed with empty, loading and similar states."
+      ]
+    },
+    contributions: [
+      "Information architecture and sidebar navigation",
+      "Dashboard and key store metrics",
+      "Orders, tables and list patterns",
+      "A new component library for the panel",
+      "Interaction states: hover, empty, loading and toasts"
+    ],
+    gallery: [
+      { placeholder: "Dashboard", alt: "Kepenk merchant panel dashboard.", width: 1600, height: 1000 },
+      { placeholder: "Orders table", alt: "Kepenk orders table.", width: 1600, height: 1200, size: "half" },
+      { placeholder: "Component library", alt: "Kepenk panel component library.", width: 1600, height: 1200, size: "half" }
     ],
     next: { slug: "provia-career", href: "/projects/provia-career", title: "Provia Career" }
   }

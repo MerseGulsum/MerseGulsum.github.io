@@ -2438,3 +2438,25 @@ main {
     transition: none !important;
   }
 }
+
+/* Reserved image area shown until a project visual is added */
+.visual-slot {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(244, 239, 231, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 239, 231, 0.04) 1px, transparent 1px),
+    #0d0d0f;
+  background-size: 40px 40px;
+}
+
+.visual-slot span {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  color: var(--text-soft);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+}

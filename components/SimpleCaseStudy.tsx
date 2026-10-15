@@ -1,9 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import type { SimpleCase } from "@/data/caseStudies";
+import type { CaseImage, SimpleCase } from "@/data/caseStudies";
 import { ProjectBackButton } from "@/components/ProjectBackButton";
 import styles from "./SimpleCaseStudy.module.css";
+
+function CaseVisual({ image, sizes, priority = false }: { image: CaseImage; sizes: string; priority?: boolean }) {
+  if (!image.src) {
+    return (
+      <div
+        className={`visual-slot ${styles.slot}`}
+        style={{ aspectRatio: `${image.width} / ${image.height}` }}
+        role="img"
+        aria-label={image.alt}
+      >
+        <span>{image.placeholder ?? "Visual"} · coming soon</span>
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={image.src}
+      alt={image.alt}
+      width={image.width}
+      height={image.height}
+      priority={priority}
+      sizes={sizes}
+    />
+  );
+}
 
 export function SimpleCaseStudy({ study }: { study: SimpleCase }) {
   return (
@@ -33,14 +59,7 @@ export function SimpleCaseStudy({ study }: { study: SimpleCase }) {
       </header>
 
       <figure className={styles.hero}>
-        <Image
-          src={study.hero.src}
-          alt={study.hero.alt}
-          width={study.hero.width}
-          height={study.hero.height}
-          priority
-          sizes="(max-width: 900px) 100vw, 1300px"
-        />
+        <CaseVisual image={study.hero} priority sizes="(max-width: 900px) 100vw, 1300px" />
       </figure>
 
       <section className={styles.row} aria-labelledby="overview">
@@ -89,12 +108,9 @@ export function SimpleCaseStudy({ study }: { study: SimpleCase }) {
         <h2 id="designs" className={styles.label}>Designs</h2>
         <div className={styles.gallery}>
           {study.gallery.map((image) => (
-            <figure key={image.src} className={image.size === "half" ? styles.half : styles.full}>
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
+            <figure key={image.src ?? image.placeholder} className={image.size === "half" ? styles.half : styles.full}>
+              <CaseVisual
+                image={image}
                 sizes={image.size === "half" ? "(max-width: 900px) 100vw, 650px" : "(max-width: 900px) 100vw, 1300px"}
               />
             </figure>

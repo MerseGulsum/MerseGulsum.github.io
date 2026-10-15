@@ -7,14 +7,16 @@ import { ProjectVisual } from "@/components/ProjectVisual";
 import { ToolMark } from "@/components/ToolMark";
 
 export function CaseStudyLayout({ project }: { project: Project }) {
+  if (!project.caseStudy) return null;
+  const caseStudy = project.caseStudy;
   const next = getNextProject(project.slug);
   const sections = [
-    ["Overview", project.caseStudy.overview],
-    ["Problem", project.caseStudy.problem],
-    ["Research or assumptions", project.caseStudy.research],
-    ["Design approach", project.caseStudy.approach],
-    ["Interaction or motion", project.caseStudy.interaction],
-    ["Outcome", project.caseStudy.outcome]
+    ["Overview", caseStudy.overview],
+    ["Problem", caseStudy.problem],
+    ["Research or assumptions", caseStudy.research],
+    ["Design approach", caseStudy.approach],
+    ["Interaction or motion", caseStudy.interaction],
+    ["Outcome", caseStudy.outcome]
   ];
 
   return (
@@ -46,7 +48,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
         </div>
         <div>
           <span>Duration</span>
-          <strong>{project.caseStudy.duration}</strong>
+          <strong>{caseStudy.duration}</strong>
         </div>
         <div>
           <span>Tools</span>
@@ -65,7 +67,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
         <section className="case-section case-section--screens">
           <p className="eyebrow">Key screens</p>
           <div className="screen-list">
-            {project.caseStudy.keyScreens.map((screen, index) => (
+            {caseStudy.keyScreens.map((screen, index) => (
               <div key={screen}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <strong>{screen}</strong>

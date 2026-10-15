@@ -5,12 +5,8 @@ import { ProjectVisual } from "@/components/ProjectVisual";
 import { ToolMark } from "@/components/ToolMark";
 
 export function ProjectCard({ project }: { project: Project }) {
-  const isProvia = project.slug === "provia-career";
-  const isMecellem = project.slug === "ai-product-experiment";
-  const title = project.title;
-  const subtitle = isMecellem ? "New Mind AI" : isProvia ? "AI Mock Interview Platform" : undefined;
-  const tools = isMecellem ? ["Adobe XD", "Gemini", "ChatGPT"] : project.skills;
-  const projectHref = project.slug === "logistics-product" ? "/projects/last-mile-delivery-app" : `/projects/${project.slug}`;
+  const { title, subtitle } = project;
+  const caseHref = `/projects/${project.slug}`;
 
   return (
     <article className="project-card">
@@ -27,34 +23,27 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="project-card__footer">
         <span>{project.year}</span>
         <div className="project-card__tools" aria-label={`Tools used for ${title}`}>
-          {tools.map((tool) => (
+          {project.skills.map((tool) => (
             <ToolMark key={tool} name={tool} />
           ))}
         </div>
       </div>
       <div className="project-card__actions">
-        {isProvia ? (
-          <>
-            <a
-              className="button-link project-card__cta"
-              href={project.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Live Site
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-            <Link className="button-link project-card__cta" href="/projects/provia-career">
-              Case Study
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </>
-        ) : (
-          <Link className="button-link project-card__cta" href={projectHref}>
-            Case Study
+        {project.isLive && (
+          <a
+            className="button-link project-card__cta"
+            href={project.externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Live Site
             <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
+          </a>
         )}
+        <Link className="button-link project-card__cta" href={caseHref}>
+          Case Study
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
       </div>
     </article>
   );

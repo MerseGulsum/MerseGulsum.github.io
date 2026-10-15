@@ -9,12 +9,14 @@ export type CaseStudy = {
   outcome: string;
 };
 
-export type ProjectVisualKind = "career" | "finance" | "logistics" | "ai";
+export type ProjectVisualKind = "career" | "finance" | "ai" | "commerce";
 
 export type Project = {
   slug: string;
   index: string;
   title: string;
+  /** Small line under the card title */
+  subtitle?: string;
   year: string;
   role: string;
   category: string;
@@ -32,5 +34,5 @@ export type Project = {
   services: string[];
   heroColor: string;
   nextProject: string;
-  caseStudy: CaseStudy;
+  caseStudy?: CaseStudy;
 };

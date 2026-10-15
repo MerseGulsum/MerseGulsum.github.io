@@ -1,5 +1,4 @@
 import { aiExperimentCase } from "@/data/cases/aiExperiment";
-import { logisticsCase } from "@/data/cases/logistics";
 import { mehirCase } from "@/data/cases/mehir";
 import { proviaCase } from "@/data/cases/provia";
 import type { Project } from "@/data/cases/types";
@@ -11,6 +10,7 @@ export const projects: Project[] = [
     slug: "provia-career",
     index: "01",
     title: "Provia Career",
+    subtitle: "AI Mock Interview Platform",
     year: "2026",
     role: "Product design, UX structure, interface direction",
     category: "AI · Career Platform",
@@ -53,38 +53,14 @@ export const projects: Project[] = [
     skills: ["Figma", "Adobe Illustrator"],
     services: ["Web App Design", "UX & Product Strategy", "Design Systems"],
     heroColor: "#a2ffda",
-    nextProject: "logistics-product",
+    nextProject: "provia-career",
     caseStudy: mehirCase
   },
   {
-    slug: "logistics-product",
-    index: "02",
-    title: "Logistics Product",
-    year: "2026",
-    role: "Product strategy, workflow UX, interface design",
-    category: "Operations UX / Web App",
-    description:
-      "A logistics workflow concept for tracking exceptions, shipment status and operational decisions.",
-    summary: "An operations product concept that turns complex logistics signals into clear workflow priorities.",
-    shortDescription:
-      "A logistics management concept designed to simplify shipment tracking, operational visibility and exception handling for teams working across complex delivery processes.",
-    showcaseCategory: "Operations UX / Web Application",
-    externalUrl: "#",
-    isLive: false,
-    coverImage: "/projects/logistics-product/cover.svg",
-    gallery: ["/projects/logistics-product/screen-01.svg", "/projects/logistics-product/screen-02.svg"],
-    imageAlt: "Logistics interface placeholder with route lines, shipment cards and status panels.",
-    visual: "logistics",
-    skills: ["Figma", "FigJam", "Codex"],
-    services: ["Web App Design", "UX & Product Strategy", "Design Systems"],
-    heroColor: "#ff8b5f",
-    nextProject: "ai-product-experiment",
-    caseStudy: logisticsCase
-  },
-  {
     slug: "ai-product-experiment",
-    index: "03",
+    index: "02",
     title: "Mecellem",
+    subtitle: "New Mind AI",
     year: "2026",
     role: "AI workflow design, prototype strategy, product UX",
     category: "AI · Legal Platform",
@@ -103,11 +79,59 @@ export const projects: Project[] = [
     ],
     imageAlt: "AI product interface placeholder with prompt panels, generated variants and evaluation notes.",
     visual: "ai",
-    skills: ["Figma", "Gemini", "ChatGPT", "Codex"],
+    skills: ["Adobe XD", "Gemini", "ChatGPT"],
     services: ["AI-Assisted Product Design", "UX & Product Strategy", "Web App Design"],
     heroColor: "#f4efe7",
-    nextProject: "provia-career",
+    nextProject: "kepenk-storefront-kits",
     caseStudy: aiExperimentCase
+  },
+  {
+    slug: "kepenk-storefront-kits",
+    index: "03",
+    title: "Kepenk Storefront Kits",
+    subtitle: "Storefront Template Families",
+    year: "2026",
+    role: "Product Designer (Freelance)",
+    category: "Design System · E-commerce",
+    description:
+      "Six storefront template families and the token-based design system behind them, for the Kepenk e-commerce platform.",
+    summary: "Storefront template families built on one shared design system.",
+    shortDescription:
+      "Storefront template families and design system for Kepenk, an e-commerce platform where merchants launch their own online stores.",
+    externalUrl: "#",
+    isLive: false,
+    coverImage: "",
+    gallery: [],
+    imageAlt: "Kepenk storefront template families.",
+    visual: "commerce",
+    skills: ["Figma"],
+    services: ["Design Systems", "Web App Design", "Mobile App Design"],
+    heroColor: "#d9ff63",
+    nextProject: "kepenk-merchant-panel"
+  },
+  {
+    slug: "kepenk-merchant-panel",
+    index: "04",
+    title: "Kepenk Merchant Panel",
+    subtitle: "Merchant Admin Panel",
+    year: "2026",
+    role: "Product Designer (Freelance)",
+    category: "B2B SaaS · Dashboard",
+    description:
+      "A redesign of the admin panel merchants use every day to run their store, built on a new, simpler component system.",
+    summary: "A calmer, more consistent admin panel for store owners.",
+    shortDescription:
+      "Redesign of Kepenk's merchant admin panel with a new design system focused on clarity and speed.",
+    externalUrl: "#",
+    isLive: false,
+    coverImage: "",
+    gallery: [],
+    imageAlt: "Kepenk merchant admin panel.",
+    visual: "commerce",
+    skills: ["Figma"],
+    services: ["B2B SaaS Design", "Web App Design", "Design Systems"],
+    heroColor: "#d9ff63",
+    nextProject: "provia-career"
   }
 ];
 
