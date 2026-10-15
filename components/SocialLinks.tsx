@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { socialLinks } from "@/data/socialLinks";
 
 type SocialLinksProps = {
@@ -23,7 +23,7 @@ export function SocialLinks({ compact = false, includeInstagram = false }: Socia
           aria-label={link.ariaLabel}
         >
           <span>{link.label}</span>
-          <ExternalLink aria-hidden="true" size={15} strokeWidth={1.8} />
+          <ArrowUpRight aria-hidden="true" size={14} strokeWidth={2} />
         </a>
       ))}
     </div>

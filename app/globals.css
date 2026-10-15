@@ -390,16 +390,28 @@ main {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+  gap: 8px;
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.025);
   color: var(--text);
-  padding: 10px 13px 10px 16px;
-  font-size: 0.82rem;
+  padding: 0 18px;
+  font-size: 0.875rem;
   font-weight: 700;
+  line-height: 1;
   transition: background 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+
+.social-link span {
+  display: block;
+  line-height: 1;
+}
+
+.social-link svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
 }
 
 .social-link:hover {
@@ -2234,7 +2246,7 @@ main {
   }
 
   .social-link {
-    padding-inline: 12px;
+    padding-inline: 14px;
   }
 
   .about-section h2,
