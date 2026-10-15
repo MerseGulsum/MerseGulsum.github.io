@@ -259,9 +259,3 @@
     border-radius: 22px;
   }
 }
-
-.slot {
-  position: relative;
-  inset: auto;
-  width: 100%;
-}

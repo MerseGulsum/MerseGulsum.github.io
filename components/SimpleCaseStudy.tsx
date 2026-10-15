@@ -1,35 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import type { CaseImage, SimpleCase } from "@/data/caseStudies";
+import type { SimpleCase } from "@/data/caseStudies";
+import { CaseVisual } from "@/components/CaseVisual";
 import { ProjectBackButton } from "@/components/ProjectBackButton";
 import styles from "./SimpleCaseStudy.module.css";
-
-function CaseVisual({ image, sizes, priority = false }: { image: CaseImage; sizes: string; priority?: boolean }) {
-  if (!image.src) {
-    return (
-      <div
-        className={`visual-slot ${styles.slot}`}
-        style={{ aspectRatio: `${image.width} / ${image.height}` }}
-        role="img"
-        aria-label={image.alt}
-      >
-        <span>{image.placeholder ?? "Visual"} · coming soon</span>
-      </div>
-    );
-  }
-
-  return (
-    <Image
-      src={image.src}
-      alt={image.alt}
-      width={image.width}
-      height={image.height}
-      priority={priority}
-      sizes={sizes}
-    />
-  );
-}
 
 export function SimpleCaseStudy({ study }: { study: SimpleCase }) {
   return (

@@ -2460,3 +2460,9 @@ main {
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
 }
+
+.visual-slot--static {
+  position: relative;
+  inset: auto;
+  width: 100%;
+}
