@@ -7,7 +7,7 @@ export function Footer({ hideSocial = false }: { hideSocial?: boolean }) {
         <strong>Merse Gülsüm</strong>
         <span>Product Designer</span>
       </div>
-      {!hideSocial && <SocialLinks compact includeInstagram />}
+      {!hideSocial && <SocialLinks compact />}
       <p>© 2026</p>
     </footer>
   );

@@ -78,7 +78,7 @@ export function CharacterHero() {
       </div>
 
       <div className="hero-social">
-        <SocialLinks includeInstagram />
+        <SocialLinks />
       </div>
 
       <div className="hero-center">

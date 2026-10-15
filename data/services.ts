@@ -15,20 +15,27 @@ export const services = [
   },
   {
     number: "03",
+    title: "B2B SaaS Design",
+    description: "Efficient and reliable tools built for teams and business workflows.",
+    details:
+      "B2B SaaS product design covering admin panels, roles and permissions, data-heavy tables, onboarding and multi-step workflows, designed for efficiency at scale."
+  },
+  {
+    number: "04",
     title: "UX & Product Strategy",
     description: "Product decisions grounded in user behavior, business goals and usability.",
     details:
       "Research, problem definition, journey mapping, feature prioritization and product decisions aligned with user needs and business goals."
   },
   {
-    number: "04",
+    number: "05",
     title: "Design Systems",
     description: "Reusable interface foundations that create visual and functional consistency.",
     details:
       "Reusable components, tokens, interaction patterns and documentation that keep products consistent and easier to scale."
   },
   {
-    number: "05",
+    number: "06",
     title: "AI-Assisted Product Design",
     description: "Faster exploration and prototyping through thoughtful use of AI tools.",
     details:
