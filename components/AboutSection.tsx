@@ -21,7 +21,7 @@ export function AboutSection() {
       <div className="section-inner about-section__inner">
         <p className="eyebrow">About Me</p>
         <h2 id="about-title">About Me</h2>
-        <p className="about-copy">I&apos;m Merse Gülsüm, a Product Designer focused on building intuitive digital products. I combine product strategy, UX/UI, design systems and AI-assisted workflows to create experiences that are clear, functional and visually distinctive. My goal is to transform complex ideas into products people genuinely enjoy using.</p>
+        <p className="about-copy">I&apos;m Merse Gülsüm, a Product Designer with 3+ years of experience in legal tech and AI products. At New Mind AI, I designed web, mobile and tablet interfaces for 10+ legal technology products. I designed and launched Provia, an AI interview practice platform, end to end, and I&apos;m building the merchant panel and design system for Kepenk. I enjoy turning messy workflows into products people can actually use.</p>
       </div>
     </section>
   );

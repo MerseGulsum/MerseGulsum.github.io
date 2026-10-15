@@ -11,57 +11,71 @@ import { createMouseFollow } from "@/lib/animations/mouseFollow";
 import { createExperienceReveal } from "@/lib/animations/services";
 
 const aboutText =
-  "I'm Merse Gülsüm, a Product Designer focused on building intuitive digital products. I combine product strategy, UX/UI, design systems and AI-assisted workflows to create experiences that are clear, functional and visually distinctive. My goal is to transform complex ideas into products people genuinely enjoy using.";
+  "I'm Merse Gülsüm, a Product Designer with 3+ years of experience in legal tech and AI products. At New Mind AI, I designed web, mobile and tablet interfaces for 10+ legal technology products. I designed and launched Provia, an AI interview practice platform, end to end, and I'm building the merchant panel and design system for Kepenk. I enjoy turning messy workflows into products people can actually use.";
 
-const aboutTags = ["//Product Design", "//Design Systems", "//AI Driven Design"];
+const aboutTags = ["//Product Design", "//Design Systems", "//B2B SaaS", "//AI Products"];
 
 const experiences = [
   {
     number: "01",
     company: "Provia",
-    role: "Product & UX Lead",
+    role: "Founder & Product Designer",
     date: "2026 – Present",
-    location: "Independent Product",
-    description:
-      "Leading the end-to-end design of an AI-powered interview coaching platform across mobile and web.",
+    location: "Remote",
+    description: "AI-powered interview coach, designed end to end from concept to launch at proviacareer.com.",
     points: [
-      "Designed the complete product architecture.",
-      "Built the design system and component library.",
-      "Created the STAR-based AI feedback experience.",
-      "Managed the product roadmap and MVP development."
+      "Designed the full experience for text, voice and video interview practice.",
+      "Designed a feedback experience that reviews each answer with the STAR method.",
+      "Prepared all screens and states in Figma and worked closely with the developer.",
+      "Planned the product roadmap and set feature priorities."
     ]
   },
   {
     number: "02",
-    company: "New Mind AI",
-    role: "UI/UX Designer",
-    date: "Nov 2022 – Apr 2026",
-    location: "Istanbul, Turkey",
-    description:
-      "Designed scalable SaaS products for legal technology platforms.",
+    company: "Kepenk",
+    role: "Product Designer (Freelance)",
+    date: "2026 – Present",
+    location: "Remote",
+    description: "E-commerce platform where merchants launch and run their own online stores.",
     points: [
-      "Designed interfaces for 10+ legal tech products.",
-      "Collaborated closely with developers and product teams.",
-      "Improved usability through iterative UX decisions.",
-      "Designed AI-powered interfaces for Nmaistro and Mürşit."
+      "Designing the merchant admin panel end to end to simplify store management.",
+      "Created UI kits with six storefront template families.",
+      "Built a token-based design system with reusable desktop and mobile components.",
+      "Working with the developer who turns the designs into live storefronts."
     ]
   },
   {
     number: "03",
+    company: "New Mind AI",
+    role: "UI/UX Designer",
+    date: "Nov 2022 – Apr 2026",
+    location: "Istanbul, Turkey",
+    description: "Designed web, mobile and tablet interfaces for legal technology products.",
+    points: [
+      "Designed screens for 10+ legal tech products.",
+      "Worked with business analysts and developers to simplify complex legal workflows.",
+      "Ran heuristic evaluations to find usability issues before development.",
+      "Redesigned key screens of Mürşit and designed data-heavy components for Nmaistro."
+    ]
+  },
+  {
+    number: "04",
     company: "Team Knock Knock",
     role: "Graphic Design Intern",
     date: "Jun 2022 – Nov 2022",
     location: "Warsaw, Poland",
-    description:
-      "Worked remotely as part of the Erasmus+ internship program.",
-    points: [
-      "Designed social media assets.",
-      "Created logo concepts.",
-      "Managed design tasks independently.",
-      "Improved visual communication through mentor feedback."
-    ]
+    description: "Remote Erasmus+ internship.",
+    points: ["Designed Instagram posts and logo concepts in line with each brand's voice."]
   }
 ];
+
+const education = {
+  school: "Eskişehir Technical University",
+  degree: "Graphic Design",
+  date: "2020 – 2024",
+  location: "Eskişehir, Turkey",
+  description: "Relevant coursework: User Experience Design, Visual Communication, Design Studio, Computer Aided Design."
+};
 
 export function AboutPageContent() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -217,6 +231,26 @@ export function AboutPageContent() {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="about-page__experience" aria-labelledby="education-title">
+          <h2 id="education-title">EDUCATION</h2>
+          <div className="about-page__experience-list">
+            <article className="about-page__experience-item">
+              <span className="about-page__experience-number">01</span>
+              <div className="about-page__experience-main">
+                <h3>{education.school}</h3>
+                <p>{education.degree}</p>
+              </div>
+              <div className="about-page__experience-meta">
+                <span>{education.date}</span>
+                <span>{education.location}</span>
+              </div>
+              <div className="about-page__experience-description">
+                <p>{education.description}</p>
+              </div>
+            </article>
           </div>
         </section>
       </div>
