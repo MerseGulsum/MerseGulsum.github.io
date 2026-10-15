@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Merse Gülsüm"
   },
   description:
-    "Portfolio of Merse Gülsüm, a Product Designer and HMI Designer focused on thoughtful digital products, HMI, UX and AI-assisted workflows."
+    "Portfolio of Merse Gülsüm, a Product Designer focused on design systems, B2B SaaS, AI products, dashboards and UI/UX design."
 };
 
 export default function RootLayout({

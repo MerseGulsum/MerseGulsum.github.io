@@ -8,7 +8,7 @@ export function ContactCTA() {
         <p className="eyebrow">Contact</p>
         <h2 id="contact-cta-title">Let’s build something thoughtful.</h2>
         <p>
-          For digital products, mobile experiences, HMI systems or collaborative product work,
+          For digital products, mobile experiences or collaborative product work,
           I’d love to hear what you’re shaping.
         </p>
         <Link className="button-link" href="/contact">

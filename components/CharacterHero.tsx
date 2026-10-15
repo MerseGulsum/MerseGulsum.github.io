@@ -73,10 +73,8 @@ export function CharacterHero() {
   return (
     <section className="hero" ref={heroRef} aria-labelledby="home-hero-title">
       <div className="hero-meta" aria-label="Professional focus">
-        <span className="hero-meta__index">Selected work / 2026</span>
-        <p>PRODUCT DESIGNER</p>
-        <p>HMI | UX | AI</p>
-        <p>Building thoughtful products.</p>
+        <p className="hero-meta__role">PRODUCT DESIGNER</p>
+        <p className="hero-meta__focus">Design System | B2B SaaS | AI Products | Dashboard | UI/UX Design</p>
       </div>
 
       <div className="hero-social">

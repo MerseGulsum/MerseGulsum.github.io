@@ -251,31 +251,18 @@ main {
   color: var(--text);
 }
 
-.hero-meta__index {
-  color: var(--text-soft);
-  font-size: 0.76rem;
-  font-weight: var(--font-weight-heavy);
-  text-transform: uppercase;
-}
-
 .hero-meta p {
   margin: 0;
 }
 
-.hero-meta p:first-child {
-  font-size: clamp(1.12rem, 2.1vw, 2rem);
-  font-weight: 800;
-  line-height: 1;
-}
-
-.hero-meta p:nth-child(2) {
+.hero-meta__role {
   color: var(--accent);
   font-size: clamp(0.9rem, 1.2vw, 1.12rem);
   font-weight: 800;
 }
 
-.hero-meta p:last-child {
-  max-width: 15rem;
+.hero-meta__focus {
+  max-width: 19rem;
   color: var(--text-muted);
   font-size: clamp(0.95rem, 1.2vw, 1.08rem);
   line-height: 1.55;
@@ -2044,8 +2031,8 @@ main {
     justify-items: center;
   }
 
-  .hero-meta p:last-child {
-    max-width: none;
+  .hero-meta__focus {
+    max-width: 22rem;
   }
 
   .hero-social .social-links {

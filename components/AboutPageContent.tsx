@@ -11,7 +11,7 @@ import { createMouseFollow } from "@/lib/animations/mouseFollow";
 import { createExperienceReveal } from "@/lib/animations/services";
 
 const aboutText =
-  "I'm Merse Gülsüm, a Product Designer and HMI Designer focused on building intuitive digital products. I combine product strategy, UX/UI, design systems and AI-assisted workflows to create experiences that are clear, functional and visually distinctive. My goal is to transform complex ideas into products people genuinely enjoy using.";
+  "I'm Merse Gülsüm, a Product Designer focused on building intuitive digital products. I combine product strategy, UX/UI, design systems and AI-assisted workflows to create experiences that are clear, functional and visually distinctive. My goal is to transform complex ideas into products people genuinely enjoy using.";
 
 const aboutTags = ["//Product Design", "//Design Systems", "//AI Driven Design"];
 
