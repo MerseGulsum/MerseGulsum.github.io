@@ -105,7 +105,7 @@ export const simpleCases: Record<string, SimpleCase> = {
     meta: [
       { label: "Role", value: "Product Designer" },
       { label: "Company", value: "New Mind AI" },
-      { label: "Year", value: "2026" },
+      { label: "Year", value: "2022 – 2026" },
       { label: "Platform", value: "Web App" }
     ],
     hero: {

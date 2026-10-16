@@ -61,7 +61,7 @@ export const projects: Project[] = [
     index: "02",
     title: "Mecellem",
     subtitle: "New Mind AI",
-    year: "2026",
+    year: "2022 – 2026",
     role: "AI workflow design, prototype strategy, product UX",
     category: "AI · Legal Platform",
     description:
