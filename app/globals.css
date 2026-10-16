@@ -665,8 +665,8 @@ main {
 
 .project-card h3 {
   margin: 0;
-  font-size: clamp(2.2rem, 4.2vw, 4.8rem);
-  line-height: 0.95;
+  font-size: clamp(1.5rem, 2.1vw, 2.4rem);
+  line-height: 1.05;
   text-wrap: balance;
 }
 
