@@ -8,6 +8,7 @@ export type { Project } from "@/data/cases/types";
 export const projects: Project[] = [
   {
     slug: "provia-career",
+    order: 2,
     index: "01",
     title: "Provia Career",
     subtitle: "AI Mock Interview Platform",
@@ -33,6 +34,7 @@ export const projects: Project[] = [
   },
   {
     slug: "mehir-finance",
+    order: 0,
     index: "02",
     title: "Mehir Finance",
     year: "2026",
@@ -58,6 +60,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-product-experiment",
+    order: 1,
     index: "02",
     title: "Mecellem",
     subtitle: "New Mind AI",
@@ -87,6 +90,7 @@ export const projects: Project[] = [
   },
   {
     slug: "kepenk-storefront-kits",
+    order: 3,
     index: "03",
     title: "Kepenk Storefront Kits",
     subtitle: "Storefront Template Families",
@@ -111,6 +115,7 @@ export const projects: Project[] = [
   },
   {
     slug: "kepenk-merchant-panel",
+    order: 4,
     index: "04",
     title: "Kepenk Merchant Panel",
     subtitle: "Merchant Admin Panel",
@@ -135,6 +140,7 @@ export const projects: Project[] = [
   },
   {
     slug: "mclub-redesign",
+    order: 5,
     index: "05",
     title: "Mclub",
     subtitle: "E-commerce UX Redesign",
@@ -159,6 +165,7 @@ export const projects: Project[] = [
   },
   {
     slug: "yacht-ops",
+    order: 6,
     index: "06",
     title: "Yacht Ops",
     subtitle: "Yacht Operations Assistant",
@@ -181,6 +188,11 @@ export const projects: Project[] = [
     nextProject: "provia-career"
   }
 ];
+
+/** All listed projects, newest first */
+export function projectsNewestFirst(exclude: string[] = []) {
+  return projects.filter((project) => !exclude.includes(project.slug)).sort((a, b) => b.order - a.order);
+}
 
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);

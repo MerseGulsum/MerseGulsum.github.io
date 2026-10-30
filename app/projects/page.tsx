@@ -1,13 +1,14 @@
 import { Footer } from "@/components/Footer";
 import { ProjectsList } from "@/components/ProjectsList";
-import { projects } from "@/data/projects";
+import { projectsNewestFirst } from "@/data/projects";
 import styles from "./ProjectsPage.module.css";
 
 export const metadata = {
   title: "Projects"
 };
 
-const listed = projects.filter((project) => project.slug !== "mehir-finance");
+// Newest at the top, oldest at the bottom (see `order` in data/projects.ts)
+const listed = projectsNewestFirst(["mehir-finance"]);
 
 export default function ProjectsPage() {
   return (

@@ -15,6 +15,8 @@ export type Project = {
   slug: string;
   index: string;
   title: string;
+  /** Chronological position: higher = newer. New projects get the next number. */
+  order: number;
   /** Small line under the card title */
   subtitle?: string;
   year: string;
