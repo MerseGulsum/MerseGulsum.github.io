@@ -6,7 +6,7 @@ export const socialLinks = [
   },
   {
     label: "Dribbble",
-    href: "https://dribbble.com/Merse",
+    href: "https://dribbble.com/gulsumkocan",
     ariaLabel: "Visit Merse Gülsüm on Dribbble"
   },
   {
