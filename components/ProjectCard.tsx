@@ -37,7 +37,7 @@ export function ProjectCard({ project, total }: { project: Project; total?: stri
 
         <p>{project.description}</p>
 
-        {project.skills.length > 0 && (
+        {!soon && (
           <div className="project-card__footer">
             <span>{project.year}</span>
             <div className="project-card__tools" aria-label={`Tools used for ${title}`}>

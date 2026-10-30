@@ -155,6 +155,29 @@ export const projects: Project[] = [
     skills: ["Figma"],
     services: ["UX & Product Strategy", "Web App Design", "Design Systems"],
     heroColor: "#d9ff63",
+    nextProject: "yacht-ops"
+  },
+  {
+    slug: "yacht-ops",
+    index: "06",
+    title: "Yacht Ops",
+    subtitle: "Yacht Operations Assistant",
+    year: "2026",
+    role: "Product Designer",
+    category: "Operations App · Maritime",
+    description:
+      "An operations app for small and mid-size yachts in Turkey: one shared boat log for captains, engineers, local technicians and owners.",
+    summary: "One shared boat log for every job, receipt and service.",
+    shortDescription: "Operations app for small and mid-size yachts in Turkey.",
+    externalUrl: "#",
+    isLive: false,
+    coverImage: "/projects/case/yacht-overview.webp",
+    gallery: [],
+    imageAlt: "Yacht Ops on iPad.",
+    visual: "commerce",
+    skills: [],
+    services: ["Mobile App Design", "B2B SaaS Design", "UX & Product Strategy"],
+    heroColor: "#d9ff63",
     nextProject: "provia-career"
   }
 ];

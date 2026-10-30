@@ -45,6 +45,12 @@ export function SimpleCaseStudy({ study }: { study: SimpleCase }) {
         </div>
       </section>
 
+      {study.moodAfterOverview && (
+        <figure className={styles.mood}>
+          <CaseVisual image={study.moodAfterOverview} sizes="(max-width: 900px) 100vw, 1300px" />
+        </figure>
+      )}
+
       <section className={styles.split} aria-label="Problem and solution">
         <div className={styles.card}>
           <h2 className={styles.label}>Problem</h2>
@@ -66,17 +72,40 @@ export function SimpleCaseStudy({ study }: { study: SimpleCase }) {
         </div>
       </section>
 
-      <section className={styles.row} aria-labelledby="what-i-did">
-        <h2 id="what-i-did" className={styles.label}>What I did</h2>
-        <ol className={styles.contributions}>
-          {study.contributions.map((item, i) => (
-            <li key={item}>
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              {item}
-            </li>
+      {study.contributions && study.contributions.length > 0 && (
+        <section className={styles.row} aria-labelledby="what-i-did">
+          <h2 id="what-i-did" className={styles.label}>What I did</h2>
+          <ol className={styles.contributions}>
+            {study.contributions.map((item, i) => (
+              <li key={item}>
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                {item}
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {study.outcome && (
+        <section className={styles.row} aria-labelledby="outcome">
+          <h2 id="outcome" className={styles.label}>Outcome</h2>
+          <div className={styles.overview}>
+            {study.outcome.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {study.moodBeforeDesigns && (
+        <div className={styles.moodPair}>
+          {study.moodBeforeDesigns.map((image) => (
+            <figure key={image.src} className={styles.mood}>
+              <CaseVisual image={image} sizes="(max-width: 900px) 100vw, 650px" />
+            </figure>
           ))}
-        </ol>
-      </section>
+        </div>
+      )}
 
       <section className={styles.gallerySection} aria-labelledby="designs">
         <h2 id="designs" className={styles.label}>Designs</h2>

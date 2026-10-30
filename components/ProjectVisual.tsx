@@ -17,7 +17,8 @@ export function ProjectVisual({
     "provia-career": "/projects/provia-career/provia-card-cover.jpg",
     "ai-product-experiment": "/projects/mecellem/mecellem.png",
     "mclub-redesign": "/projects/case/mclub-hero.webp",
-    "kepenk-merchant-panel": "/projects/case/panel-dashboard.webp"
+    "kepenk-merchant-panel": "/projects/case/panel-dashboard.webp",
+    "yacht-ops": "/projects/case/yacht-overview.webp"
   };
   const coverImage = useCoverImage ? coverImageBySlug[project.slug] : undefined;
   const title = displayTitle ?? project.title;

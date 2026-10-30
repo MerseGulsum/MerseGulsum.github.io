@@ -85,6 +85,25 @@
   height: auto;
 }
 
+/* Atmosphere photos */
+.mood {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 32px;
+}
+
+.mood img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.moodPair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
 /* Overview + What I did: label left, content right */
 .row {
   display: grid;
@@ -249,13 +268,15 @@
 
   .row,
   .split,
-  .gallery {
+  .gallery,
+  .moodPair {
     grid-template-columns: 1fr;
   }
 
   .hero,
   .gallery figure,
-  .card {
+  .card,
+  .mood {
     border-radius: 22px;
   }
 }

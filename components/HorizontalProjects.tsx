@@ -9,32 +9,8 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import { createHorizontalProjects } from "@/lib/animations/horizontalProjects";
 
-// Placeholder card until the project is ready
-const yachtOps: Project = {
-  slug: "yacht-ops",
-  index: "",
-  title: "Yacht Ops",
-  year: "2026",
-  role: "",
-  category: "In progress",
-  description: "A new project, coming soon.",
-  summary: "",
-  shortDescription: "",
-  externalUrl: "#",
-  isLive: false,
-  coverImage: "",
-  gallery: [],
-  imageAlt: "Yacht Ops visual coming soon.",
-  visual: "commerce",
-  skills: [],
-  services: [],
-  heroColor: "#d9ff63",
-  nextProject: "provia-career",
-  comingSoon: true
-};
-
-const homeOrder = ["provia-career", "kepenk-merchant-panel", "mclub-redesign"];
-const homeProjects = [...homeOrder.map((slug) => getProject(slug)).filter((p): p is Project => Boolean(p)), yachtOps].map(
+const homeOrder = ["provia-career", "kepenk-merchant-panel", "mclub-redesign", "yacht-ops"];
+const homeProjects = [...homeOrder.map((slug) => getProject(slug)).filter((p): p is Project => Boolean(p))].map(
   (project, i) => ({ ...project, index: String(i + 1).padStart(2, "0") })
 );
 const homeTotal = String(homeProjects.length).padStart(2, "0");

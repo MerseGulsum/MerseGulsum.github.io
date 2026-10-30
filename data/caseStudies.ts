@@ -21,7 +21,12 @@ export type SimpleCase = {
   overview: string[];
   problem: { intro: string; points: string[] };
   solution: { intro: string; points: string[] };
-  contributions: string[];
+  contributions?: string[];
+  outcome?: string[];
+  /** Atmosphere photo shown full width after the overview */
+  moodAfterOverview?: CaseImage;
+  /** Atmosphere photos shown side by side before the designs */
+  moodBeforeDesigns?: CaseImage[];
   gallery: CaseImage[];
   next: { slug: string; href: string; title: string };
 };
@@ -375,6 +380,101 @@ export const simpleCases: Record<string, SimpleCase> = {
         alt: "Mclub delivery and payment step with guest checkout and locked order summary.",
         width: 2400,
         height: 1669
+      }
+    ],
+    next: { slug: "yacht-ops", href: "/projects/yacht-ops", title: "Yacht Ops" }
+  },
+
+  "yacht-ops": {
+    slug: "yacht-ops",
+    title: "Yacht Ops",
+    category: "Yacht Operations Assistant",
+    tagline: "An operations app for small and mid-size yachts in Turkey.",
+    meta: [
+      { label: "Role", value: "Product Designer" },
+      { label: "Platforms", value: "iPad, iPhone, web links" },
+      { label: "Year", value: "2026" },
+      { label: "Status", value: "Concept, field validation ongoing" }
+    ],
+    hero: {
+      src: "/projects/case/yacht-overview.webp",
+      alt: "Yacht Ops vessel overview on iPad with documents and equipment.",
+      width: 2400,
+      height: 1601
+    },
+    overview: [
+      "Yacht Ops is an operations app for small and mid-size yachts in Turkey.",
+      "It brings captains, engineers, local technicians and owners into one shared boat log, so every job, receipt and service is tracked in one place and the boat keeps its own history."
+    ],
+    moodAfterOverview: {
+      src: "/projects/case/yacht-mood-sea.webp",
+      alt: "View from a yacht bow over calm sea.",
+      width: 2400,
+      height: 1346
+    },
+    problem: {
+      intro: "On small yachts, day-to-day operations run on WhatsApp groups, paper receipts and the captain's memory.",
+      points: [
+        "When something breaks, the captain calls a technician, photos get lost in chats and invoices are hard to find at the end of the month.",
+        "When the crew changes, the boat's history (which part was replaced, which technician can be trusted, how a fault was fixed last time) leaves with the person who knew it.",
+        "The owner only sees a total at the end of the month, not what the money was spent on.",
+        "Most existing tools are English-only and built for superyachts or marinas. None is designed for a Turkish captain of a 24 m motor yacht who works with local technicians on WhatsApp."
+      ]
+    },
+    solution: {
+      intro: "Yacht Ops turns every issue into a job and keeps everything connected to the boat.",
+      points: [
+        "Technicians join from a link. A job is sent on WhatsApp; the technician accepts it, adds photos, parts and the invoice from a simple Turkish page, without installing an app or creating an account.",
+        "Receipts fill themselves. The crew snaps a receipt, the amount, date and supplier are read from the photo, and anything over the owner's limit is sent for approval automatically.",
+        "Maintenance without paper. Engineers run daily rounds, log engine hours and sign services with a PIN, from a phone, even offline.",
+        "The boat keeps the memory. Every job, service and part is saved to the vessel, so the next engineer gets a ready-made handover instead of a phone call.",
+        "Owners see everything, without an account. They approve spend and read a clear monthly report in Turkish from a private link."
+      ]
+    },
+    outcome: [
+      "A concept designed for three people on three devices: the captain on iPad, the crew on phone, and technicians and owners on web links.",
+      "The next step is validating it with captains and technicians in Göcek and Bodrum."
+    ],
+    moodBeforeDesigns: [
+      {
+        src: "/projects/case/yacht-mood-hull.webp",
+        alt: "Palm shadow on a yacht hull at sunset.",
+        width: 2400,
+        height: 1600
+      },
+      {
+        src: "/projects/case/yacht-mood-bow.webp",
+        alt: "Palm shadow on a yacht bow in a bay.",
+        width: 2400,
+        height: 1600
+      }
+    ],
+    gallery: [
+      {
+        src: "/projects/case/yacht-dashboard.webp",
+        alt: "Captain dashboard on iPad and daily engine-room round on iPhone.",
+        width: 2400,
+        height: 1601
+      },
+      {
+        src: "/projects/case/yacht-offline.webp",
+        alt: "Offline edit conflict on a job, choosing which version to keep.",
+        width: 2400,
+        height: 1600,
+        size: "half"
+      },
+      {
+        src: "/projects/case/yacht-handover.webp",
+        alt: "Handover package for the incoming engineer.",
+        width: 2400,
+        height: 1600,
+        size: "half"
+      },
+      {
+        src: "/projects/case/yacht-technician.webp",
+        alt: "Technician web link in Turkish: accept the job and report the work done.",
+        width: 2400,
+        height: 1600
       }
     ],
     next: { slug: "provia-career", href: "/projects/provia-career", title: "Provia Career" }
