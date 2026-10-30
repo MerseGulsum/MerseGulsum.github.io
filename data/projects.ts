@@ -131,6 +131,30 @@ export const projects: Project[] = [
     skills: ["Figma"],
     services: ["B2B SaaS Design", "Web App Design", "Design Systems"],
     heroColor: "#d9ff63",
+    nextProject: "mclub-redesign"
+  },
+  {
+    slug: "mclub-redesign",
+    index: "05",
+    title: "Mclub",
+    subtitle: "E-commerce UX Redesign",
+    year: "2026",
+    role: "UX Research, UX/UI Design, Design System",
+    category: "UX Research · E-commerce",
+    description:
+      "A concept redesign of Missha Türkiye's official store, built on complaint data so shoppers can trust the price they see and always know where their order is.",
+    summary: "Transparent pricing and clear order status for a beauty e-commerce store.",
+    shortDescription:
+      "Personal concept: UX research and redesign of mclub.com.tr, Missha Türkiye's official online store.",
+    externalUrl: "#",
+    isLive: false,
+    coverImage: "/projects/case/mclub-hero.webp",
+    gallery: [],
+    imageAlt: "Mclub redesign on laptop and phone.",
+    visual: "commerce",
+    skills: ["Figma"],
+    services: ["UX & Product Strategy", "Web App Design", "Design Systems"],
+    heroColor: "#d9ff63",
     nextProject: "provia-career"
   }
 ];

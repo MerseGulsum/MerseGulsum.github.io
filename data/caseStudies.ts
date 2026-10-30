@@ -260,6 +260,87 @@ export const simpleCases: Record<string, SimpleCase> = {
       { placeholder: "Orders table", alt: "Kepenk orders table.", width: 1600, height: 1200, size: "half" },
       { placeholder: "Component library", alt: "Kepenk panel component library.", width: 1600, height: 1200, size: "half" }
     ],
+    next: { slug: "mclub-redesign", href: "/projects/mclub-redesign", title: "Mclub" }
+  },
+
+  "mclub-redesign": {
+    slug: "mclub-redesign",
+    title: "Mclub",
+    category: "UX Research · E-commerce",
+    tagline: "A concept UX redesign of mclub.com.tr, Missha Türkiye's official online store.",
+    meta: [
+      { label: "Role", value: "UX Research, UX/UI Design, Design System" },
+      { label: "Type", value: "Personal concept · 2026" },
+      { label: "Platform", value: "Desktop & Mobile Web" },
+      { label: "Tools", value: "Figma" }
+    ],
+    hero: {
+      src: "/projects/case/mclub-hero.webp",
+      alt: "Mclub redesigned home page on a laptop and a phone.",
+      width: 2400,
+      height: 1669
+    },
+    overview: [
+      "Finding products on Mclub wasn't the problem. Shoppers couldn't trust the price they saw or know what was happening with their order.",
+      "I analysed complaint data and the site itself to define the problems, then redesigned the shopping and post-purchase flow so users can see what is happening at every step."
+    ],
+    problem: {
+      intro: "I analysed 48 Mclub and 530 Missha complaints on Şikayetvar alongside a heuristic review. Most came from pricing, orders, returns and support, not the products, and only 20% of Mclub complaints had been answered.",
+      points: [
+        "Price and campaign mismatch: banner discounts didn't reach the cart, and cart and checkout showed different totals.",
+        "Post-purchase uncertainty: payments taken with no visible order, hidden cancel windows, refunds stuck in the wallet.",
+        "No reachable support, and no way to see the status of a request.",
+        "Weak trust signals: near-perfect ratings, missing negative reviews, no expiry date or stock info.",
+        "Interface friction: a faded Add to Cart button, a cookie banner without a reject option, no guest checkout, small tap targets on mobile."
+      ]
+    },
+    solution: {
+      intro: "Five principles: pay the price you see, every state has a name and a next step, prove trust, one primary action per screen, help starts where the problem happens.",
+      points: [
+        "Transparent pricing: net campaign price on cards and product pages, a campaign progress bar and price-change alerts in the cart, and checkout locked to the cart total.",
+        "Status-based order tracking with a timeline, remaining cancel time and one-tap cancel.",
+        "A returns and wallet hub showing where and when money arrives, plus Club Points with their TL value and expiry.",
+        "In-context support tied to each order, with request number, status and expected reply time.",
+        "Honest reviews and product info: rating distribution, verified buyers, a negative-review filter, expiry date, stock and delivery date.",
+        "Frictionless mobile web: 44px tap targets, sticky Add to Cart and Checkout with the net total, guest checkout and a mini cart."
+      ]
+    },
+    contributions: [
+      "Secondary user research and thematic analysis of complaint data",
+      "Heuristic evaluation based on Nielsen's principles (13 issues, rated by severity)",
+      "User journey map and three proto-personas",
+      "Prioritized design opportunities with measurable success criteria",
+      "Design system: color, typography, spacing and radius tokens with status colors",
+      "30+ desktop and mobile screens, from home to checkout, order tracking, returns, reviews and support"
+    ],
+    gallery: [
+      {
+        src: "/projects/case/mclub-home.webp",
+        alt: "Mclub best sellers and skin-type categories on desktop, mobile menu on phone.",
+        width: 2400,
+        height: 1550
+      },
+      {
+        src: "/projects/case/mclub-product.webp",
+        alt: "Mclub product detail page with net campaign price, expiry date and stock info.",
+        width: 2400,
+        height: 1550,
+        size: "half"
+      },
+      {
+        src: "/projects/case/mclub-cart.webp",
+        alt: "Mclub cart with applied campaign and price-change alert.",
+        width: 2400,
+        height: 1669,
+        size: "half"
+      },
+      {
+        src: "/projects/case/mclub-checkout.webp",
+        alt: "Mclub delivery and payment step with guest checkout and locked order summary.",
+        width: 2400,
+        height: 1669
+      }
+    ],
     next: { slug: "provia-career", href: "/projects/provia-career", title: "Provia Career" }
   }
 };
