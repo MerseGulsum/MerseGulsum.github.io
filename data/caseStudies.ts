@@ -226,7 +226,12 @@ export const simpleCases: Record<string, SimpleCase> = {
       { label: "Platform", value: "Web App" },
       { label: "Tools", value: "Figma" }
     ],
-    hero: { placeholder: "Cover visual", alt: "Kepenk merchant admin panel.", width: 1600, height: 1000 },
+    hero: {
+      src: "/projects/case/panel-dashboard.webp",
+      alt: "Kepenk merchant panel overview dashboard with store setup checklist.",
+      width: 2000,
+      height: 1400
+    },
     overview: [
       "The merchant panel is where store owners manage orders, products and their storefront every day. I am redesigning it from scratch, with a new design system focused on clarity and speed.",
       "The work moves page by page, starting with navigation and the dashboard."
@@ -256,9 +261,40 @@ export const simpleCases: Record<string, SimpleCase> = {
       "Interaction states: hover, empty, loading and toasts"
     ],
     gallery: [
-      { placeholder: "Dashboard", alt: "Kepenk merchant panel dashboard.", width: 1600, height: 1000 },
-      { placeholder: "Orders table", alt: "Kepenk orders table.", width: 1600, height: 1200, size: "half" },
-      { placeholder: "Component library", alt: "Kepenk panel component library.", width: 1600, height: 1200, size: "half" }
+      {
+        src: "/projects/case/panel-ai-studio.webp",
+        alt: "AI Assistant studio for generating product photos, videos, banners and social posts.",
+        width: 2000,
+        height: 1400
+      },
+      {
+        src: "/projects/case/panel-ai-detail.webp",
+        alt: "AI-generated product photo detail with add to product images action.",
+        width: 2000,
+        height: 1400,
+        size: "half"
+      },
+      {
+        src: "/projects/case/panel-homepage-editor.webp",
+        alt: "Homepage layout editor with banner design variants.",
+        width: 2000,
+        height: 1400,
+        size: "half"
+      },
+      {
+        src: "/projects/case/panel-onboarding.webp",
+        alt: "First product drawer with import options from Excel, Trendyol or other platforms.",
+        width: 2000,
+        height: 1400,
+        size: "half"
+      },
+      {
+        src: "/projects/case/panel-email-campaign.webp",
+        alt: "Email campaign report with delivery funnel and sent email preview.",
+        width: 2000,
+        height: 1333,
+        size: "half"
+      }
     ],
     next: { slug: "mclub-redesign", href: "/projects/mclub-redesign", title: "Mclub" }
   },
