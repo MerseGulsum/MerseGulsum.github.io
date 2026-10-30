@@ -35,4 +35,6 @@ export type Project = {
   heroColor: string;
   nextProject: string;
   caseStudy?: CaseStudy;
+  /** Shown as a placeholder card without a case study link */
+  comingSoon?: boolean;
 };

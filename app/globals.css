@@ -625,24 +625,71 @@ main {
 
 .project-card {
   position: relative;
-  width: min(78vw, 540px);
-  min-height: 690px;
+  width: min(80vw, 460px);
   display: grid;
   align-content: start;
-  gap: 18px;
-  border: 1px solid var(--line);
-  border-radius: 44px;
-  background: rgba(255, 255, 255, 0.035);
-  padding: clamp(18px, 2.4vw, 28px);
-  isolation: isolate;
-  overflow: hidden;
-  transition: transform 260ms var(--ease-out), border-color 260ms var(--ease-out), background 260ms var(--ease-out);
+  gap: 24px;
 }
 
-.project-card:hover {
-  transform: translateY(-6px);
+/* Image */
+.project-card__visual {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: #0d0d0f;
+}
+
+/* Text */
+.project-card__body {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.project-card .project-card__meta {
+  padding-bottom: 14px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-soft);
+}
+
+.project-card__index {
+  color: var(--accent);
+}
+
+.project-card__index span {
+  color: var(--text-soft);
+}
+
+.project-card h3 a {
+  transition: color 220ms var(--ease-out);
+}
+
+.project-card:hover h3 a {
+  color: var(--accent);
+}
+
+.project-card .project-card__footer {
+  margin-top: 4px;
+  color: var(--text-soft);
+}
+
+.project-card__actions {
+  margin-top: 8px;
+}
+
+.project-card__cta--soon {
+  cursor: default;
+  color: var(--text-soft);
+  border-style: dashed;
+}
+
+.project-card__cta--soon:hover {
+  transform: none;
   border-color: var(--line-strong);
-  background: rgba(255, 255, 255, 0.052);
+  background: transparent;
+  color: var(--text-soft);
 }
 
 .project-card__meta,
@@ -747,7 +794,9 @@ main {
 }
 
 .project-card .project-visual {
-  border-radius: 44px;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
 }
 
 .project-visual__cover-image {
@@ -757,7 +806,11 @@ main {
 }
 
 .project-card:hover .project-visual {
-  transform: scale(1.018);
+  transform: scale(1.03);
+}
+
+.project-card--soon:hover .project-visual {
+  transform: none;
 }
 
 .project-visual--large {
