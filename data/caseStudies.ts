@@ -106,7 +106,7 @@ export const simpleCases: Record<string, SimpleCase> = {
     slug: "ai-product-experiment",
     title: "Mecellem",
     category: "AI · Legal Platform",
-    tagline: "An enterprise legal AI platform by New Mind AI.",
+    tagline: "A family of AI-powered legal products by New Mind AI.",
     meta: [
       { label: "Role", value: "UI/UX Designer" },
       { label: "Company", value: "New Mind AI" },
@@ -120,37 +120,37 @@ export const simpleCases: Record<string, SimpleCase> = {
       height: 1714
     },
     overview: [
-      "Mecellem is an enterprise platform that helps legal teams understand, produce and manage legal work with AI. It brings case law, legislation, litigation, contracts, transactions and document drafting into one connected system.",
-      "I led the UX process and UI design across its core modules, working closely with business analysts, AI engineers and developers."
+      "Mecellem was a family of AI-powered legal products, each built for a different part of legal work: case law, legislation, litigation, contracts, transactions and document drafting.",
+      "I joined after Mecellem's launch and designed the screens and UX flows of these products, working closely with business analysts, AI engineers and developers. Toward the end of my time there, the company decided to offer these products as MCP-based services."
     ],
     problem: {
-      intro: "Legal work is complex, multi-step and high-stakes. Before Mecellem, it was spread across separate tools and documents.",
+      intro: "Legal work is complex, multi-step and high-stakes, and each product covered a different process with its own users, data and steps.",
       points: [
-        "Workflows such as a lawsuit, from petition to ruling, involve many steps, people and documents.",
+        "Processes such as a lawsuit, from petition to ruling, involve many steps, people and documents.",
         "Dense legal content creates high cognitive load.",
-        "AI output is hard to trust unless users can see where it comes from.",
+        "AI output is hard to trust unless users can check it.",
         "An error or a missed step in a legal process has real consequences."
       ]
     },
     solution: {
-      intro: "One workspace where every module follows the same logic: clear structure, visible progress, and AI output that is always linked to its source.",
+      intro: "Clear interfaces that follow the same logic across every product.",
       points: [
         "Complex processes broken into clear, trackable stages.",
         "Dense information organized with a strong visual hierarchy.",
-        "AI insights users can verify before they act.",
-        "Shared components and patterns, so every module feels like one product."
+        "AI insights users can understand and verify before they act.",
+        "Shared components and patterns, so separate products feel like one family."
       ]
     },
     contributions: [
-      "Malumat (case law): Made court decisions and precedents easy to search, filter and compare.",
-      "Mevzuat (legislation & compliance): Designed how laws, regulations and obligations are tracked and turned into compliance tasks.",
-      "Muhakemat (litigation): Designed case workflows from petition to ruling, with stages, deadlines and documents in one view.",
-      "Mukavele (contracts): Designed the contract lifecycle: obligations, milestones and risks tracked over time.",
-      "Muamelat (transactions): Mapped complex deals into stages, actors and approval flows.",
-      "Müellif (document generation): Designed the flow from instruction to a first draft that follows the institution's templates and style.",
+      "Malumat (case law): Designed how court decisions and precedents are searched, filtered and compared.",
+      "Mevzuat (legislation & compliance): Designed how laws, regulations and obligations are tracked.",
+      "Muhakemat (litigation): Designed case workflows from petition to ruling, with stages, deadlines and documents.",
+      "Mukavele (contracts): Designed the contract lifecycle: obligations, milestones and risks.",
+      "Muamelat (transactions): Designed complex deals as stages, actors and approval flows.",
+      "Müellif (document generation): Designed the flow from instruction to a first draft based on templates.",
       "Turned requirements into user flows, wireframes and prototypes with business analysts and developers.",
       "Ran heuristic evaluations to catch usability issues before development.",
-      "Built reusable components and interaction patterns shared across modules."
+      "Built reusable components and interaction patterns shared across products."
     ],
     gallery: [
       {
