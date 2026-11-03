@@ -1,10 +1,14 @@
 "use client";
 
 import Lenis from "lenis";
-import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "@/lib/gsap";
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
@@ -15,6 +19,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true
     });
+    lenisRef.current = lenis;
 
     const update = (time: number) => {
       lenis.raf(time);
@@ -27,8 +32,24 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     return () => {
       cancelAnimationFrame(raf);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Every new page opens from the top. Smooth scrolling otherwise keeps the
+  // previous page's scroll position, so a case study opened from the middle.
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+    lenisRef.current?.scrollTo(0, { immediate: true, force: true });
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      lenisRef.current?.scrollTo(0, { immediate: true, force: true });
+      ScrollTrigger.refresh();
+    });
+  }, [pathname]);
 
   return children;
 }
