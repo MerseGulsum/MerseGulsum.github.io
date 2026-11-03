@@ -9,7 +9,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import { createHorizontalProjects } from "@/lib/animations/horizontalProjects";
 
-const homeOrder = ["ai-product-experiment", "provia-career", "kepenk-merchant-panel", "mclub-redesign", "yacht-ops"];
+const homeOrder = ["mecellem", "yacht-ops", "kepenk-merchant-panel", "provia-career"];
 const homeProjects = [...homeOrder.map((slug) => getProject(slug)).filter((p): p is Project => Boolean(p))].map(
   (project, i) => ({ ...project, index: String(i + 1).padStart(2, "0") })
 );

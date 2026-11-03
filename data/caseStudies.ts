@@ -6,6 +6,8 @@ export type CaseImage = {
   alt: string;
   width: number;
   height: number;
+  /** Optional caption under the image: module name and a short description */
+  caption?: { title: string; text?: string };
   /** "full" spans the whole row, "half" sits next to another half image */
   size?: "full" | "half";
 };
@@ -99,13 +101,13 @@ export const simpleCases: Record<string, SimpleCase> = {
         height: 2400
       }
     ],
-    next: { slug: "ai-product-experiment", href: "/projects/ai-product-experiment", title: "Mecellem" }
+    next: { slug: "mecellem", href: "/projects/mecellem", title: "Mecellem" }
   },
 
-  "ai-product-experiment": {
-    slug: "ai-product-experiment",
+  "mecellem": {
+    slug: "mecellem",
     title: "Mecellem",
-    category: "AI · Legal Platform",
+    category: "Enterprise AI · Legal Products",
     tagline: "A family of AI-powered legal products by New Mind AI.",
     meta: [
       { label: "Role", value: "UI/UX Designer" },
@@ -153,13 +155,6 @@ export const simpleCases: Record<string, SimpleCase> = {
       "Built reusable components and interaction patterns shared across products."
     ],
     gallery: [
-      {
-        src: "/projects/case/mecellem-main.webp",
-        alt: "Mecellem home screen on a laptop.",
-        width: 2400,
-        height: 2400,
-        size: "full"
-      },
       {
         src: "/projects/mecellem/gallery/mecellem-11.webp",
         alt: "Mecellem contract analysis interface on a laptop.",

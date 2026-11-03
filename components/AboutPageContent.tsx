@@ -11,7 +11,7 @@ import { createMouseFollow } from "@/lib/animations/mouseFollow";
 import { createExperienceReveal } from "@/lib/animations/services";
 
 const aboutText =
-  "I'm Merse Gülsüm, a Product Designer with 3+ years of experience in legal tech and AI products. At New Mind AI, I designed web, mobile and tablet interfaces for 10+ legal technology products. I designed and launched Provia, an AI interview practice platform, end to end, and I'm building the merchant panel and design system for Kepenk. I enjoy turning messy workflows into products people can actually use.";
+  "I'm Merse Gülsüm, a Product Designer with 4 years of experience in legal tech and AI products. At New Mind AI, I designed web, mobile and tablet interfaces for 10+ legal technology products. I designed and launched Provia, an AI interview practice platform, end to end, and I'm building the merchant panel and design system for Kepenk. I enjoy turning messy workflows into products people can actually use.";
 
 const aboutTags = ["//Product Design", "//Design Systems", "//B2B SaaS", "//AI Products"];
 
@@ -52,7 +52,7 @@ const experiences = [
     location: "Istanbul, Turkey",
     description: "Designed web, mobile and tablet interfaces for legal technology products.",
     points: [
-      "Designed screens for 10+ legal tech products.",
+      "Designed screens and UX flows for Mecellem's legal products: Malumat, Mevzuat, Muhakemat, Mukavele, Muamelat and Müellif.",
       "Worked with business analysts and developers to simplify complex legal workflows.",
       "Ran heuristic evaluations to find usability issues before development.",
       "Redesigned key screens of Mürşit and designed data-heavy components for Nmaistro."
@@ -71,7 +71,7 @@ const experiences = [
 
 const education = {
   school: "Eskişehir Technical University",
-  degree: "Graphic Design",
+  degree: "Associate Degree in Graphic Design",
   date: "2020 – 2024",
   location: "Eskişehir, Turkey",
   description: "Relevant coursework: User Experience Design, Visual Communication, Design Studio, Computer Aided Design."

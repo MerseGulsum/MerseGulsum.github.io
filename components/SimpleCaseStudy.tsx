@@ -116,6 +116,12 @@ export function SimpleCaseStudy({ study }: { study: SimpleCase }) {
                 image={image}
                 sizes={image.size === "half" ? "(max-width: 900px) 100vw, 650px" : "(max-width: 900px) 100vw, 1300px"}
               />
+              {image.caption && (
+                <figcaption className={styles.caption}>
+                  <strong>{image.caption.title}</strong>
+                  {image.caption.text && <span>{image.caption.text}</span>}
+                </figcaption>
+              )}
             </figure>
           ))}
         </div>

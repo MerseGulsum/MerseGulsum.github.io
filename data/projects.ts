@@ -59,16 +59,16 @@ export const projects: Project[] = [
     caseStudy: mehirCase
   },
   {
-    slug: "ai-product-experiment",
+    slug: "mecellem",
     order: 1,
     index: "02",
     title: "Mecellem",
     subtitle: "New Mind AI",
     year: "2022 – 2026",
     role: "AI workflow design, prototype strategy, product UX",
-    category: "AI · Legal Platform",
+    category: "Enterprise AI · Legal Products",
     description:
-      "An AI-powered legal intelligence platform that helps legal professionals search, organize and work with complex legal information.",
+      "A family of AI-powered legal products by New Mind AI.",
     summary: "An AI workflow concept that keeps exploration fast while preserving designer judgment and traceability.",
     shortDescription:
       "An experimental digital product exploring how AI-assisted workflows can support research, ideation, interface generation and faster product-design decisions.",
@@ -182,16 +182,18 @@ export const projects: Project[] = [
     gallery: [],
     imageAlt: "Yacht Ops on iPad.",
     visual: "commerce",
-    skills: [],
+    skills: ["Figma"],
     services: ["Mobile App Design", "B2B SaaS Design", "UX & Product Strategy"],
     heroColor: "#d9ff63",
     nextProject: "provia-career"
   }
 ];
 
-/** All listed projects, newest first */
-export function projectsNewestFirst(exclude: string[] = []) {
-  return projects.filter((project) => !exclude.includes(project.slug)).sort((a, b) => b.order - a.order);
+/** Order on the Projects page. Projects not in this list are hidden there. */
+export const projectsPageOrder = ["mecellem", "yacht-ops", "kepenk-merchant-panel", "provia-career", "mclub-redesign"];
+
+export function projectsForProjectsPage() {
+  return projectsPageOrder.map((slug) => getProject(slug)).filter((p): p is Project => Boolean(p));
 }
 
 export function getProject(slug: string) {

@@ -37,10 +37,8 @@ function FigJamLogo() {
 function AdobeLogo({ label }: LogoProps) {
   return (
     <>
-      <rect x="5" y="5" width="22" height="22" rx="5" />
-      <text x="16" y="20" textAnchor="middle">
-        {label}
-      </text>
+      {/* Letters removed: the tool name is already written next to the icon */}
+      <rect x="5" y="5" width="22" height="22" rx="5" data-label={label} />
     </>
   );
 }
