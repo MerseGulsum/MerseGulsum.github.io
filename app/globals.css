@@ -623,11 +623,12 @@ main {
   padding: 0 var(--page-inset);
 }
 
+/* Cards in a row stretch to the same height; year/tools and buttons sit on one line across cards */
 .project-card {
   position: relative;
   width: min(80vw, 460px);
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
@@ -642,8 +643,9 @@ main {
 
 /* Text */
 .project-card__body {
-  display: grid;
-  align-content: start;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
@@ -671,8 +673,13 @@ main {
 }
 
 .project-card .project-card__footer {
-  margin-top: 4px;
+  margin-top: auto;
+  padding-top: 4px;
   color: var(--text-soft);
+}
+
+.project-card--soon .project-card__actions {
+  margin-top: auto;
 }
 
 .project-card__actions {
@@ -774,8 +781,7 @@ main {
   display: flex;
   flex-wrap: nowrap;
   gap: 16px;
-  justify-self: start;
-  align-self: end;
+  align-self: flex-start;
 }
 
 .project-card__cta {
