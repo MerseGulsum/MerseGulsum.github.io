@@ -11,7 +11,7 @@ import { createMouseFollow } from "@/lib/animations/mouseFollow";
 import { createExperienceReveal } from "@/lib/animations/services";
 
 const aboutText =
-  "I'm Merse Gülsüm, a Product Designer with 4 years of experience in legal tech and AI products. At New Mind AI, I designed web, mobile and tablet interfaces for 10+ legal technology products. I designed and launched Provia, an AI interview practice platform, end to end, and I'm building the merchant panel and design system for Kepenk. I enjoy turning messy workflows into products people can actually use.";
+  "I'm Merse Gülsüm, a Product Designer with 4 years of experience designing digital products. I spent 3.5 years at New Mind AI, designing web, mobile and tablet interfaces for 10+ AI-powered legal products, including the Mecellem product family. Today I'm building Provia, an AI interview practice platform I designed and launched end to end, and designing the merchant panel and design system for Kepenk. I enjoy turning complex workflows into products people can actually use.";
 
 const aboutTags = ["//Product Design", "//Design Systems", "//B2B SaaS", "//AI Products"];
 
