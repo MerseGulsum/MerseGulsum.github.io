@@ -106,12 +106,12 @@ export const simpleCases: Record<string, SimpleCase> = {
     slug: "ai-product-experiment",
     title: "Mecellem",
     category: "AI · Legal Platform",
-    tagline: "An AI-powered legal intelligence platform by New Mind AI.",
+    tagline: "An enterprise legal AI platform by New Mind AI.",
     meta: [
-      { label: "Role", value: "Product Designer" },
+      { label: "Role", value: "UI/UX Designer" },
       { label: "Company", value: "New Mind AI" },
       { label: "Year", value: "2022 – 2026" },
-      { label: "Platform", value: "Web App" }
+      { label: "Platforms", value: "Web, mobile, tablet" }
     ],
     hero: {
       src: "/projects/case/mecellem-hero.webp",
@@ -120,31 +120,37 @@ export const simpleCases: Record<string, SimpleCase> = {
       height: 1714
     },
     overview: [
-      "Mecellem simplifies how legal professionals discover, organize and work with complex legal information.",
-      "I worked with AI engineers and developers to turn advanced AI capabilities into product experiences that feel reliable, transparent and effortless."
+      "Mecellem is an enterprise platform that helps legal teams understand, produce and manage legal work with AI. It brings case law, legislation, litigation, contracts, transactions and document drafting into one connected system.",
+      "I led the UX process and UI design across its core modules, working closely with business analysts, AI engineers and developers."
     ],
     problem: {
-      intro: "Legal professionals work across contracts, legislation, case law and internal knowledge every day, spread over different tools.",
+      intro: "Legal work is complex, multi-step and high-stakes. Before Mecellem, it was spread across separate tools and documents.",
       points: [
-        "Information-dense interfaces create high cognitive load.",
-        "AI-generated insights are hard to trust without a way to verify them.",
-        "Repetitive tasks slow down everyday decisions."
+        "Workflows such as a lawsuit, from petition to ruling, involve many steps, people and documents.",
+        "Dense legal content creates high cognitive load.",
+        "AI output is hard to trust unless users can see where it comes from.",
+        "An error or a missed step in a legal process has real consequences."
       ]
     },
     solution: {
-      intro: "A unified, AI-assisted workspace designed around three principles: clarity, trust and efficiency.",
+      intro: "One workspace where every module follows the same logic: clear structure, visible progress, and AI output that is always linked to its source.",
       points: [
-        "Search that reaches relevant information without overwhelming users.",
-        "AI insights users can understand and verify before acting.",
-        "Simplified workflows that keep the detail and control legal work needs."
+        "Complex processes broken into clear, trackable stages.",
+        "Dense information organized with a strong visual hierarchy.",
+        "AI insights users can verify before they act.",
+        "Shared components and patterns, so every module feels like one product."
       ]
     },
     contributions: [
-      "Search experience for complex legal data",
-      "Information architecture for dense legal content",
-      "Workflow and task flow simplification",
-      "Dashboards with clear visual hierarchy",
-      "Reusable components and interaction patterns"
+      "Malumat (case law): Made court decisions and precedents easy to search, filter and compare.",
+      "Mevzuat (legislation & compliance): Designed how laws, regulations and obligations are tracked and turned into compliance tasks.",
+      "Muhakemat (litigation): Designed case workflows from petition to ruling, with stages, deadlines and documents in one view.",
+      "Mukavele (contracts): Designed the contract lifecycle: obligations, milestones and risks tracked over time.",
+      "Muamelat (transactions): Mapped complex deals into stages, actors and approval flows.",
+      "Müellif (document generation): Designed the flow from instruction to a first draft that follows the institution's templates and style.",
+      "Turned requirements into user flows, wireframes and prototypes with business analysts and developers.",
+      "Ran heuristic evaluations to catch usability issues before development.",
+      "Built reusable components and interaction patterns shared across modules."
     ],
     gallery: [
       {
