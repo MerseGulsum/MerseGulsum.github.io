@@ -1,44 +1,30 @@
 export const services = [
   {
     number: "01",
-    title: "Mobile App Design",
-    description: "Clear and intuitive mobile experiences shaped around real user needs.",
+    title: "Complex Workflows & Enterprise Apps",
+    description: "Clear interfaces for complex, multi-step and data-heavy work.",
     details:
-      "End-to-end mobile product design covering user flows, wireframes, interface systems, prototyping and usability-focused interaction decisions."
+      "Web applications, admin panels and dashboards for professional users, covering roles and permissions, approval flows, data-heavy tables and multi-step processes."
   },
   {
     number: "02",
-    title: "Web App Design",
-    description: "Scalable and structured digital products for complex workflows.",
+    title: "Mobile & Tablet Apps",
+    description: "Focused experiences for people working on the go.",
     details:
-      "Structured web application experiences for dashboards, platforms and complex workflows, designed for clarity, scalability and responsive use."
+      "End-to-end mobile and tablet design: user flows, wireframes, prototypes, and states such as offline, error and empty screens."
   },
   {
     number: "03",
-    title: "B2B SaaS Design",
-    description: "Efficient and reliable tools built for teams and business workflows.",
+    title: "Design Systems",
+    description: "Reusable foundations that keep products consistent.",
     details:
-      "B2B SaaS product design covering admin panels, roles and permissions, data-heavy tables, onboarding and multi-step workflows, designed for efficiency at scale."
+      "Components, tokens and interaction patterns that let teams build faster and keep every screen consistent."
   },
   {
     number: "04",
-    title: "UX & Product Strategy",
-    description: "Product decisions grounded in user behavior, business goals and usability.",
+    title: "UX Research & Product Strategy",
+    description: "Product decisions grounded in real user needs.",
     details:
-      "Research, problem definition, journey mapping, feature prioritization and product decisions aligned with user needs and business goals."
-  },
-  {
-    number: "05",
-    title: "Design Systems",
-    description: "Reusable interface foundations that create visual and functional consistency.",
-    details:
-      "Reusable components, tokens, interaction patterns and documentation that keep products consistent and easier to scale."
-  },
-  {
-    number: "06",
-    title: "AI-Assisted Product Design",
-    description: "Faster exploration and prototyping through thoughtful use of AI tools.",
-    details:
-      "AI-supported research, concept exploration, prototyping and workflow acceleration while keeping design judgment and human control central."
+      "User research, heuristic evaluations, journey mapping and feature prioritization, supported by AI tools for faster exploration."
   }
 ];

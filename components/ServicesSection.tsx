@@ -23,8 +23,8 @@ export function ServicesSection() {
     <section className="section services-section" ref={ref} aria-labelledby="services-title">
       <div className="section-inner">
         <div className="services-section__header">
-          <p className="eyebrow">Services</p>
-          <h2 id="services-title">Services</h2>
+          <p className="eyebrow">What I Do</p>
+          <h2 id="services-title">What I Do</h2>
         </div>
         <div className="services-list">
           {services.map((service) => (
