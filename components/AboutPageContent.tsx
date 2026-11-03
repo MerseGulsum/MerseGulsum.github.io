@@ -64,7 +64,7 @@ const experiences = [
     role: "Graphic Design Intern",
     date: "Jun 2022 – Nov 2022",
     location: "Warsaw, Poland",
-    description: "Remote Erasmus+ internship.",
+    description: "On-site Erasmus+ internship.",
     points: ["Designed Instagram posts and logo concepts in line with each brand's voice."]
   }
 ];
