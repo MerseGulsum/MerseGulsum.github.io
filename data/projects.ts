@@ -2,6 +2,7 @@ import { aiExperimentCase } from "@/data/cases/aiExperiment";
 import { mehirCase } from "@/data/cases/mehir";
 import { proviaCase } from "@/data/cases/provia";
 import type { Project } from "@/data/cases/types";
+import { simpleCases } from "@/data/caseStudies";
 
 export type { Project } from "@/data/cases/types";
 
@@ -189,11 +190,25 @@ export const projects: Project[] = [
   }
 ];
 
-/** Order on the Projects page. Projects not in this list are hidden there. */
-export const projectsPageOrder = ["mecellem", "yacht-ops", "kepenk-merchant-panel", "provia-career", "mclub-redesign"];
+/**
+ * Order on the Projects page. Projects not in this list are hidden there.
+ * A project whose case study has no hero image yet (e.g. Kepenk Storefront Kits)
+ * stays hidden until its visuals are added, then appears in its place automatically.
+ */
+export const projectsPageOrder = [
+  "mecellem",
+  "yacht-ops",
+  "kepenk-merchant-panel",
+  "provia-career",
+  "kepenk-storefront-kits",
+  "mclub-redesign"
+];
 
 export function projectsForProjectsPage() {
-  return projectsPageOrder.map((slug) => getProject(slug)).filter((p): p is Project => Boolean(p));
+  return projectsPageOrder
+    .map((slug) => getProject(slug))
+    .filter((p): p is Project => Boolean(p))
+    .filter((p) => Boolean(simpleCases[p.slug]?.hero.src));
 }
 
 export function getProject(slug: string) {
