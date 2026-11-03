@@ -2569,3 +2569,17 @@ main {
   inset: auto;
   width: 100%;
 }
+
+/* Visible email on the Contact page */
+.contact-page__intro .contact-page__email a {
+  color: var(--accent);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(217, 255, 99, 0.4);
+  transition: text-decoration-color 220ms var(--ease-out);
+}
+
+.contact-page__intro .contact-page__email a:hover {
+  text-decoration-color: var(--accent);
+}

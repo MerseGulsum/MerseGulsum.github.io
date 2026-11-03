@@ -16,9 +16,9 @@ export default function ContactPage() {
             <br />
             thoughtful together.
           </h1>
-          <p>
-            Have a project, collaboration or idea in mind? Share a few details and I’ll get
-            back to you as soon as possible.
+          <p>Open to full-time Product Designer roles in Istanbul or Ankara.</p>
+          <p className="contact-page__email">
+            <a href="mailto:gulsumkocan.123@gmail.com">gulsumkocan.123@gmail.com</a>
           </p>
         </div>
         <ContactForm />
