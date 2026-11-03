@@ -289,7 +289,7 @@ main {
   width: min(calc(100vw - (var(--gutter) * 2)), 1120px);
   margin: 0;
   color: var(--text);
-  font-size: clamp(3.1rem, 7.5vw, 8.3rem);
+  font-size: clamp(calc(3.1rem - 10px), calc(7.5vw - 10px), calc(8.3rem - 10px));
   font-weight: 800;
   line-height: 1;
   text-align: center;
@@ -564,7 +564,7 @@ main {
 .contact-page h1,
 .case-hero h1 {
   margin: 0;
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(calc(3rem - 10px), calc(8vw - 10px), calc(8rem - 10px));
   font-weight: 800;
   line-height: 0.92;
 }
@@ -719,7 +719,7 @@ main {
 
 .project-card h3 {
   margin: 0;
-  font-size: clamp(1.5rem, 2.1vw, 2.4rem);
+  font-size: clamp(1.5rem, calc(2.1vw - 10px), calc(2.4rem - 10px));
   line-height: 1.05;
   text-wrap: balance;
 }
@@ -1012,7 +1012,7 @@ main {
 .service-row h3,
 .service-row__title {
   margin: 0;
-  font-size: clamp(1.45rem, 2.6vw, 3rem);
+  font-size: clamp(1.45rem, calc(2.6vw - 10px), calc(3rem - 10px));
   line-height: 1;
   font-weight: 700;
 }
@@ -1150,7 +1150,7 @@ main {
 .mecellem-showcase__header h1 {
   margin: 10px 0 0;
   color: var(--text);
-  font-size: clamp(3.6rem, 7vw, 7.6rem);
+  font-size: clamp(calc(3.6rem - 10px), calc(7vw - 10px), calc(7.6rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.9;
 }
@@ -1312,7 +1312,7 @@ main {
 .mecellem-editorial-section h2 {
   max-width: 100%;
   color: var(--text);
-  font-size: clamp(2.8rem, 5.4vw, 6.4rem);
+  font-size: clamp(calc(2.8rem - 10px), calc(5.4vw - 10px), calc(6.4rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.96;
   letter-spacing: 0;
@@ -1544,7 +1544,7 @@ main {
   grid-area: number;
   align-self: end;
   color: rgba(217, 255, 99, 0.92);
-  font-size: clamp(4.4rem, 11vw, 11.5rem);
+  font-size: clamp(calc(4.4rem - 10px), calc(11vw - 10px), calc(11.5rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.78;
 }
@@ -1599,7 +1599,7 @@ main {
 .projects-showcase__title {
   margin: 0;
   color: var(--text);
-  font-size: clamp(2.9rem, 5.8vw, 7.2rem);
+  font-size: clamp(calc(2.9rem - 10px), calc(5.8vw - 10px), calc(7.2rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.9;
   text-wrap: balance;
@@ -1729,7 +1729,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: clamp(1.8rem, 4vw, 4rem);
+  font-size: clamp(1.8rem, calc(4vw - 10px), calc(4rem - 10px));
   font-weight: 800;
   line-height: 1;
 }
@@ -1757,7 +1757,7 @@ main {
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  font-size: clamp(4.5rem, 5.8vw, 5.5rem);
+  font-size: clamp(calc(4.5rem - 10px), calc(5.8vw - 10px), calc(5.5rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.94;
 }
@@ -1923,7 +1923,7 @@ main {
 .about-page__experience h2 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(4.4rem, 7vw, 7.8rem);
+  font-size: clamp(calc(4.4rem - 10px), calc(7vw - 10px), calc(7.8rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.92;
 }
@@ -1986,7 +1986,7 @@ main {
 .about-page__experience h2 {
   margin-bottom: var(--space-5);
   color: var(--accent);
-  font-size: clamp(3.2rem, 6.4vw, 7rem);
+  font-size: clamp(calc(3.2rem - 10px), calc(6.4vw - 10px), calc(7rem - 10px));
 }
 
 .about-page__experience-list {
@@ -2031,7 +2031,7 @@ main {
 
 .about-page__experience-number {
   color: var(--accent);
-  font-size: clamp(3.8rem, 7vw, 7rem);
+  font-size: clamp(calc(3.8rem - 10px), calc(7vw - 10px), calc(7rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 0.78;
 }
@@ -2049,7 +2049,7 @@ main {
 
 .about-page__experience-main h3 {
   color: var(--text);
-  font-size: clamp(1.6rem, 2.4vw, 2.45rem);
+  font-size: clamp(1.6rem, calc(2.4vw - 10px), calc(2.45rem - 10px));
   font-weight: var(--font-weight-heavy);
   line-height: 1.02;
 }
@@ -2323,7 +2323,7 @@ main {
 
   .hero-title {
     top: 10%;
-    font-size: clamp(3rem, 17vw, 5.8rem);
+    font-size: clamp(calc(3rem - 10px), calc(17vw - 10px), calc(5.8rem - 10px));
     white-space: normal;
   }
 
@@ -2347,7 +2347,7 @@ main {
   .projects-page h1,
   .contact-page h1,
   .case-hero h1 {
-    font-size: clamp(2.5rem, 14vw, 4.8rem);
+    font-size: clamp(calc(2.5rem - 10px), calc(14vw - 10px), calc(4.8rem - 10px));
   }
 
   .about-copy {
@@ -2371,7 +2371,7 @@ main {
   }
 
   .projects-showcase__number {
-    font-size: clamp(3.6rem, 22vw, 6.8rem);
+    font-size: clamp(calc(3.6rem - 10px), calc(22vw - 10px), calc(6.8rem - 10px));
   }
 
   .projects-showcase__visual-mask {
@@ -2402,7 +2402,7 @@ main {
 
   .about-page__copy h1,
   .about-page__experience h2 {
-    font-size: clamp(3rem, 15vw, 4.8rem);
+    font-size: clamp(calc(3rem - 10px), calc(15vw - 10px), calc(4.8rem - 10px));
   }
 
   .about-page__copy > p:not(.eyebrow) {
@@ -2429,7 +2429,7 @@ main {
 
   .project-card h3,
   .projects-showcase__title {
-    font-size: clamp(2.2rem, 13vw, 4rem);
+    font-size: clamp(2.2rem, calc(13vw - 10px), calc(4rem - 10px));
   }
 
   .footer,
@@ -2467,7 +2467,7 @@ main {
   }
 
   .mecellem-showcase__header h1 {
-    font-size: clamp(3rem, 15vw, 5rem);
+    font-size: clamp(calc(3rem - 10px), calc(15vw - 10px), calc(5rem - 10px));
   }
 
   .mecellem-showcase__controls {
