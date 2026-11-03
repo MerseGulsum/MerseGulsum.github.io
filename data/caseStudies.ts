@@ -224,8 +224,8 @@ export const simpleCases: Record<string, SimpleCase> = {
   "kepenk-merchant-panel": {
     slug: "kepenk-merchant-panel",
     title: "Kepenk Merchant Panel",
-    category: "B2B SaaS · Dashboard",
-    tagline: "A simpler admin panel for merchants running their online store on Kepenk.",
+    category: "B2B SaaS · E-commerce",
+    tagline: "The admin panel merchants use to set up and run their online store on Kepenk, redesigned from scratch on a new component system.",
     meta: [
       { label: "Role", value: "Product Designer (Freelance)" },
       { label: "Year", value: "2026" },
@@ -239,32 +239,37 @@ export const simpleCases: Record<string, SimpleCase> = {
       height: 1400
     },
     overview: [
-      "The merchant panel is where store owners manage orders, products and their storefront every day. I am redesigning it from scratch, with a new design system focused on clarity and speed.",
-      "The work moves page by page, starting with navigation and the dashboard."
+      "Kepenk is an e-commerce platform, similar to ikas, where merchants set up and run their own online store without writing code. The merchant panel is where all of that happens: setting up the store, adding products, designing the storefront, managing orders and running marketing.",
+      "I'm redesigning the panel from scratch, page by page, with a new component system focused on clarity and speed."
     ],
     problem: {
-      intro: "Merchants spend hours in the panel, but everyday tasks took more effort than they should.",
+      intro: "Setting up a store and running it every day took more effort than it should.",
       points: [
-        "Navigation and screens had grown complex over time.",
-        "Components looked and behaved differently from page to page.",
-        "Common tasks took too many steps."
+        "New merchants didn't know where to start or what was missing before launch.",
+        "Adding products one by one was slow, especially for merchants already selling on other marketplaces.",
+        "Product visuals and campaign content needed separate tools outside the panel.",
+        "Navigation had grown complex, and components looked and behaved differently from page to page."
       ]
     },
     solution: {
-      intro: "A calmer, consistent panel built on its own component system.",
+      intro: "One calm, consistent panel that guides merchants from setup to daily work.",
       points: [
-        "A clear sidebar with inline accordion groups.",
-        "Borderless cards, filled primary actions and readable status chips.",
-        "A strict 4-point system for spacing, sizing and radius.",
-        "Every page designed with empty, loading and similar states."
+        "Guided setup: A checklist on the dashboard shows what's left before the store goes live.",
+        "Fast product onboarding: Import products from Excel, Trendyol or other platforms from a single drawer.",
+        "AI Studio: Generate product photos, videos, banners and social posts inside the panel and add them straight to products.",
+        "Visual storefront editing: A homepage layout editor with ready-made banner variants.",
+        "Marketing in the same place: Email campaigns with a clear delivery funnel report.",
+        "One component system: Inline accordion sidebar, borderless cards, filled primary actions, readable status chips and a strict 4-point grid. Every page includes empty, loading and similar states."
       ]
     },
     contributions: [
       "Information architecture and sidebar navigation",
-      "Dashboard and key store metrics",
-      "Orders, tables and list patterns",
-      "A new component library for the panel",
-      "Interaction states: hover, empty, loading and toasts"
+      "Dashboard with store setup checklist and key metrics",
+      "Product onboarding and import flow",
+      "AI Studio for product visuals and marketing content",
+      "Storefront layout editor",
+      "Email campaign reporting",
+      "Component library and interaction states: empty, loading, toasts"
     ],
     gallery: [
       {

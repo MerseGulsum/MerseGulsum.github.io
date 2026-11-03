@@ -122,9 +122,9 @@ export const projects: Project[] = [
     subtitle: "Merchant Admin Panel",
     year: "2026",
     role: "Product Designer (Freelance)",
-    category: "B2B SaaS · Dashboard",
+    category: "B2B SaaS · E-commerce",
     description:
-      "A redesign of the admin panel merchants use every day to run their store, built on a new, simpler component system.",
+      "The admin panel merchants use to set up and run their online store on Kepenk, redesigned from scratch on a new component system.",
     summary: "A calmer, more consistent admin panel for store owners.",
     shortDescription:
       "Redesign of Kepenk's merchant admin panel with a new design system focused on clarity and speed.",
